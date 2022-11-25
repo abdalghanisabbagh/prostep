@@ -23,8 +23,8 @@ class Routes {
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.splashRoute:
-        return MaterialPageRoute(builder: (_) => const SplashView());
+     // case Routes.splashRoute:
+       // return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.loginRoute:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case Routes.registerRoute:
@@ -32,7 +32,7 @@ class RouteGenerator {
       case Routes.forgetpasswordRoute:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordView());
       case Routes.mainRoute:
-        return MaterialPageRoute(builder: (_) => const MainView());
+        return MaterialPageRoute(builder: (_) =>  MainView());
       case Routes.storeDetailsRoute:
         return MaterialPageRoute(builder: (_) => const StoreDetailsView());
       case Routes.onbording:

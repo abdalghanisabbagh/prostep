@@ -102,7 +102,9 @@ class OnBoardingPAge extends StatelessWidget {
             child: TextButton(
                 onPressed: () {
                   Navigator.pushReplacement(
-            context, PageTransition(const LoginScreen()));
+                      context,
+                      PageTransition(
+                          const LoginScreen(), Curves.easeInOutQuart));
                 },
                 child: const Text(
                   AppStrings.skip,
@@ -126,8 +128,8 @@ class OnBoardingPAge extends StatelessWidget {
                       curve: Curves.ease,
                     );
                   } else {
-                    Navigator.pushReplacement(
-                        context, PageTransition( LoginScreen()));
+                    Navigator.pushReplacement(context,
+                        PageTransition(const LoginScreen(), Curves.easeInOutQuart));
                   }
                 },
                 child: const Text(

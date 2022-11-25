@@ -53,7 +53,9 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
     Timer(const Duration(seconds: 5), () {
       setState(() {
         Navigator.pushReplacement(
-            context, PageTransition(const OnBoardingView()));
+          context,
+          PageTransition(const OnBoardingView(),Curves.bounceInOut),
+        );
         // Navigator.pushReplacementNamed(context, Routes.onbording);
       });
     });

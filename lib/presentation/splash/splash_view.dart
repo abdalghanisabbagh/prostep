@@ -1,4 +1,4 @@
-import 'dart:async';
+/*import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:prostep1/presentation/resources/assets_manger.dart';
 import 'package:prostep1/presentation/resources/constants.dart';
@@ -71,3 +71,4 @@ class _SplashViewState extends State<SplashView> {
     _timer?.cancel();
   }
 }
+*/
