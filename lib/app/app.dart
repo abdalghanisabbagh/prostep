@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:prostep1/presentation/resources/routes_manger.dart';
 import 'package:prostep1/presentation/resources/theme_manger.dart';
 
@@ -17,10 +18,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override   
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RouteGenerator.getRoute,
-      initialRoute: Routes.mainRoute,
+      initialRoute: Routes.filtering,
       theme: getApplicationTheme(),
     );
   }

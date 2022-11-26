@@ -113,7 +113,7 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child:
-                      Image.asset('assets/images/splash_remove_background.png')
+                      Image.asset('assets/images/prostepsplash.png')
                   /* child: Text(
                   'YOUR APP\'S LOGO',
                 ),*/
