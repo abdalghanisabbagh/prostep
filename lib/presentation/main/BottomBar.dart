@@ -1,8 +1,13 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:prostep1/controllers/home_controller.dart';
+import 'package:prostep1/presentation/Drawer/drawer_page.dart';
 import 'package:prostep1/presentation/Teacher/teacher.dart';
 import 'package:prostep1/presentation/main/starting_page.dart';
+import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -18,6 +23,8 @@ class HomePageState extends State<BottomBar> {
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      endDrawer: const SettingPage(),
+      key: Get.find<HomeController>().sideMenuKey,
       body: _pages[currentIndex]['page'],
       bottomNavigationBar: Container(
         height: displayWidth * .155,
@@ -132,7 +139,7 @@ class HomePageState extends State<BottomBar> {
   ];
   final List<Map<String, dynamic>> _pages = [
     {
-      'page': const startingpage(),
+      'page': Startingpage(),
       'title': 'Home Screen',
     },
     {
@@ -140,4 +147,67 @@ class HomePageState extends State<BottomBar> {
       'title': 'Home Screen',
     },
   ];
+  Widget buildMenu() {
+    return SingleChildScrollView(
+      padding: EdgeInsets.all(50),
+      child: Column(children: [
+        ListTile(
+          onTap: () {},
+          leading: const Icon(Icons.home, size: 20.0, color: Colors.white),
+          title: const Text("Home"),
+          textColor: Colors.white,
+          dense: true,
+        ),
+        ListTile(
+          onTap: () {},
+          leading:
+              const Icon(Icons.verified_user, size: 20.0, color: Colors.white),
+          title: const Text("Profile"),
+          textColor: Colors.white,
+          dense: true,
+
+          // padding: EdgeInsets.zero,
+        ),
+        ListTile(
+          onTap: () {},
+          leading: const Icon(Icons.monetization_on,
+              size: 20.0, color: Colors.white),
+          title: const Text("Wallet"),
+          textColor: Colors.white,
+          dense: true,
+
+          // padding: EdgeInsets.zero,
+        ),
+        ListTile(
+          onTap: () {},
+          leading:
+              const Icon(Icons.shopping_cart, size: 20.0, color: Colors.white),
+          title: const Text("Cart"),
+          textColor: Colors.white,
+          dense: true,
+
+          // padding: EdgeInsets.zero,
+        ),
+        ListTile(
+          onTap: () {},
+          leading:
+              const Icon(Icons.star_border, size: 20.0, color: Colors.white),
+          title: const Text("Favorites"),
+          textColor: Colors.white,
+          dense: true,
+
+          // padding: EdgeInsets.zero,
+        ),
+        ListTile(
+          onTap: () {},
+          leading: const Icon(Icons.settings, size: 20.0, color: Colors.white),
+          title: const Text("Settings"),
+          textColor: Colors.white,
+          dense: true,
+
+          // padding: EdgeInsets.zero,
+        ),
+      ]),
+    );
+  }
 }

@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:prostep1/controllers/home_controller.dart';
+import 'package:prostep1/presentation/Drawer/drawer_page.dart';
 import 'package:prostep1/presentation/main/filtering.dart';
+import 'package:prostep1/presentation/resources/routes_manger.dart';
 
 import '../../widget/recommendrd_Courses.dart';
 import '../../widget/recommendrd_bootcamps.dart';
 
 // ignore: camel_case_types
-class startingpage extends StatefulWidget {
-  const startingpage({super.key});
-
-  @override
-  State<startingpage> createState() => _startingpageState();
-}
-
-// ignore: camel_case_types
-class _startingpageState extends State<startingpage> {
+class Startingpage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -71,7 +66,9 @@ class _startingpageState extends State<startingpage> {
                 //menu
                 InkWell(
                   splashColor: Colors.white,
-                  onTap: () {},
+                  onTap: () {
+                    controller.openDrawer();
+                  },
                   child: SvgPicture.asset(
                     'assets/images/menu.svg',
                   ),
@@ -137,7 +134,7 @@ class _startingpageState extends State<startingpage> {
                 InkWell(
                   splashColor: Colors.white,
                   onTap: () {
-                    Get.to(const Filtering());
+                    Get.toNamed(Routes.getfiltering());
                   },
                   child: SvgPicture.asset(
                     'assets/images/filter.svg',

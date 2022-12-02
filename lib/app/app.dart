@@ -16,12 +16,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override   
+  @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: RouteGenerator.getRoute,
-      initialRoute: Routes.filtering,
+      getPages: Routes.routes,
+      initialRoute: Routes.getteacherinformation(),
       theme: getApplicationTheme(),
     );
   }
