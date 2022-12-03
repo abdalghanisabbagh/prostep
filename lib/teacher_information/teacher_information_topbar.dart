@@ -132,14 +132,15 @@ class _TeacherInfoTopbarState extends State<TeacherInfoTopbar> {
                       style: TextStyle(color: Colors.black, fontSize: 15)),
                 ],
               ),
-              Expanded(
+              const Expanded(
                 child: TabBarView(children: [
                   HomeTeacher(),
                   Text("safaf"),
                   Text("home"),
                   Text("safaf")
                 ]),
-              )
+              ),
+              
             ],
           ),
         ),

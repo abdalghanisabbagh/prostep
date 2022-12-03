@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:prostep1/widget/skils_widget.dart';
 
 class HomeTeacher extends StatefulWidget {
   const HomeTeacher({super.key});
@@ -15,8 +16,8 @@ class _HomeTeacherState extends State<HomeTeacher> {
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Padding(
+        children: [
+          const Padding(
             padding: EdgeInsets.only(left: 20.0, top: 25),
             child: Text(
               'Education:',
@@ -26,10 +27,10 @@ class _HomeTeacherState extends State<HomeTeacher> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(
               left: 20.0,
             ),
@@ -41,12 +42,12 @@ class _HomeTeacherState extends State<HomeTeacher> {
               ),
             ),
           ),
-          Divider(
+          const Divider(
             height: 25,
             color: Color.fromARGB(25, 42, 86, 121),
             thickness: 5,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(
               left: 20.0,
             ),
@@ -58,10 +59,10 @@ class _HomeTeacherState extends State<HomeTeacher> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(
               left: 20.0,
             ),
@@ -73,13 +74,58 @@ class _HomeTeacherState extends State<HomeTeacher> {
               ),
             ),
           ),
-          Divider(
+          const Divider(
             height: 25,
             color: Color.fromARGB(25, 42, 86, 121),
             thickness: 5,
-          )
+          ),
+          const Padding(
+            padding: EdgeInsets.only(
+              left: 20.0,
+            ),
+            child: Text(
+              'Skills:',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(
+            height: 7,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: SizedBox(
+              width: double.maxFinite,
+              height: 35,
+              child: ListView.separated(
+                  separatorBuilder: (context, index) => const SizedBox(
+                        width: 12,
+                      ),
+                  itemCount: _skils.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (ctx, index) {
+                    return SkilsWidget(
+                      skils: _skils[index],
+                    );
+                  }),
+            ),
+          ),
+          const Divider(
+            height: 25,
+            color: Color.fromARGB(25, 42, 86, 121),
+            thickness: 5,
+          ),
         ],
       ),
     );
   }
+
+  final List _skils = [
+    'CSS',
+    'HTML',
+    'FRONT',
+    'FRONT',
+  ];
 }
