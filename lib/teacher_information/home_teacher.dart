@@ -15,7 +15,6 @@ class _HomeTeacherState extends State<HomeTeacher> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Padding(
@@ -130,13 +129,13 @@ class _HomeTeacherState extends State<HomeTeacher> {
                     fontWeight: FontWeight.bold),
               ),
             ),
-            
             Padding(
               padding: const EdgeInsets.only(left: 20.0),
               child: SizedBox(
                 width: double.maxFinite,
                 height: 200,
                 child: ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
                     separatorBuilder: (context, index) => const SizedBox(
                           width: 12,
                           height: 12,
@@ -148,12 +147,12 @@ class _HomeTeacherState extends State<HomeTeacher> {
                     }),
               ),
             ),
-             const Divider(
+            const Divider(
               height: 25,
               color: Color.fromARGB(25, 42, 86, 121),
               thickness: 5,
             ),
-              Padding(
+            Padding(
               padding: const EdgeInsets.only(left: 20.0),
               child: SizedBox(
                 width: double.maxFinite,
@@ -164,7 +163,7 @@ class _HomeTeacherState extends State<HomeTeacher> {
                           height: 12,
                         ),
                     itemCount: 2,
-                    scrollDirection: Axis.vertical,
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (ctx, index) {
                       return const WorkExperience();
                     }),

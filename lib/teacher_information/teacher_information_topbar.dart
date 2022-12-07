@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:prostep1/teacher_information/bootcamps_teacher.dart';
+import 'package:prostep1/teacher_information/courses_teacher.dart';
 import 'package:prostep1/teacher_information/home_teacher.dart';
+import 'package:prostep1/teacher_information/projects_teacher.dart';
 
 class TeacherInfoTopbar extends StatefulWidget {
   const TeacherInfoTopbar({super.key});
@@ -75,36 +78,51 @@ class _TeacherInfoTopbarState extends State<TeacherInfoTopbar> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  MaterialButton(
-                    onPressed: () {},
-                    color: const Color.fromARGB(255, 29, 64, 91),
-                    splashColor: Colors.white,
-                    child: const Text(
-                      "Train me",
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontSize: 14),
+                  SizedBox(
+                    width: 125,
+                    child: MaterialButton(
+                      onPressed: () {},
+                      color: const Color.fromARGB(255, 29, 64, 91),
+                      splashColor: Colors.white,
+                      child: const Text(
+                        "Train me",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 14),
+                      ),
                     ),
                   ),
-                  MaterialButton(
-                    onPressed: () {},
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                    splashColor: Colors.white,
-                    child: const Text(
-                      " Message",
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 29, 64, 91), fontSize: 14),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 29, 64, 91),
+                          width: 1.5),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    width: 125,
+                    height: 35,
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        " Message",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 29, 64, 91),
+                            fontSize: 14),
+                      ),
                     ),
                   ),
-                  MaterialButton(
-                    minWidth: 25,
-                    splashColor: Colors.white,
-                    onPressed: () {},
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                    child: const Text(
-                      "...",
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 29, 64, 91), fontSize: 24),
+                  Container(
+                    width: 50,
+                    height: 35,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 29, 64, 91),
+                          width: 2),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Icon(Icons.more_horiz,color: Colors.black54)
                     ),
                   ),
                 ],
@@ -131,12 +149,11 @@ class _TeacherInfoTopbarState extends State<TeacherInfoTopbar> {
               const Expanded(
                 child: TabBarView(children: [
                   HomeTeacher(),
-                  Text("safaf"),
-                  Text("home"),
-                  Text("safaf")
+                  CoursesTeacher(),
+                  BootcampsTeacher(),
+                  ProjectsTeacher(),
                 ]),
               ),
-              
             ],
           ),
         ),
