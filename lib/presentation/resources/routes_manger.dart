@@ -5,10 +5,14 @@ import 'package:prostep1/presentation/login/login_view.dart';
 import 'package:prostep1/presentation/main/BottomBar.dart';
 import 'package:prostep1/presentation/main/filtering.dart';
 import 'package:prostep1/presentation/onboarding/view/onboarding_view.dart';
+import 'package:prostep1/presentation/profile/main_profile.dart';
 import 'package:prostep1/presentation/registere/register_view.dart';
 import 'package:prostep1/presentation/splash/splash_view_animation.dart';
 import 'package:prostep1/presentation/store_details/store_details_view.dart';
 import 'package:prostep1/teacher_information/teacher_information_topbar.dart';
+
+import '../profile/main_profile.dart';
+import '../profile/main_profile.dart';
 
 class Routes {
   static const String splashRoute = "/";
@@ -22,7 +26,8 @@ class Routes {
   static const String filtering = "/Filtering";
   static const String setting = "/Setting";
   static const String teacherinformation = "/teacherinformation";
-
+  static const String teacherinfotopbar = "/teacherinfotopbar";
+  static const String mainProfileScreen = "/mainProfileScreen";
 
   static String getsplashRoute() => '$splashRoute';
   static String getloginRoute() => '$loginRoute';
@@ -34,7 +39,9 @@ class Routes {
   static String getsplashviewanimation() => '$splashviewanimation';
   static String getfiltering() => '$filtering';
   static String getsetting() => '$setting';
-    static String getteacherinformation() => '$teacherinformation';
+  static String getteacherinformation() => '$teacherinformation';
+  static String getteacherinfotopbar() => '$teacherinfotopbar';
+  static String getmainProfileScreen() => '$mainProfileScreen';
 
   static List<GetPage> routes = [
     // GetPage(name: splashRoute, page: () => SplashView()),
@@ -71,14 +78,18 @@ class Routes {
         name: filtering,
         page: () => const Filtering(),
         transition: Transition.fade),
-         GetPage(
+    GetPage(
         name: teacherinformation,
         page: () => const TeacherInfoTopbar(),
         transition: Transition.fade),
-    // GetPage(
-    //     name: setting,
-    //     page: () => const SettingPage(),
-    //     transition: Transition.fade),
+    GetPage(
+        name: teacherinfotopbar,
+        page: () => const TeacherInfoTopbar(),
+        transition: Transition.upToDown),
+    GetPage(
+        name: mainProfileScreen,
+        page: () => const MainProfileScreen(),
+        transition: Transition.upToDown),
 
     // GetPage(
     //   name: popularFood,

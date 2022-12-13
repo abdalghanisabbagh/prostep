@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
+
+import '../teacher_information/teacher_information_topbar.dart';
 
 class RecommendedTrainingProjects extends StatefulWidget {
   const RecommendedTrainingProjects({super.key});
@@ -37,13 +40,18 @@ class _RecommendedTrainingProjectsState
         const SizedBox(
           height: 7,
         ),
-        const Text(
-          "Abdo sabbagh",
-          maxLines: 1,
-          style: TextStyle(
-            color: Color.fromARGB(255, 102, 109, 115),
-            fontWeight: FontWeight.bold,
-            fontSize: 11,
+        InkWell(
+          onTap: () {
+            Get.to(const TeacherInfoTopbar(), transition: Transition.downToUp);
+          },
+          child: const Text(
+            "Abdo sabbagh",
+            maxLines: 1,
+            style: TextStyle(
+              color: Color.fromARGB(255, 102, 109, 115),
+              fontWeight: FontWeight.bold,
+              fontSize: 11,
+            ),
           ),
         ),
         const SizedBox(

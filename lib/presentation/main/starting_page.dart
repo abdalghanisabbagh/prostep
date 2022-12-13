@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:prostep1/controllers/home_controller.dart';
-import 'package:prostep1/presentation/Drawer/drawer_page.dart';
-import 'package:prostep1/presentation/main/filtering.dart';
 import 'package:prostep1/presentation/resources/routes_manger.dart';
 
 import '../../widget/recommendrd_Courses.dart';
@@ -11,6 +9,8 @@ import '../../widget/recommendrd_bootcamps.dart';
 
 // ignore: camel_case_types
 class Startingpage extends GetView<HomeController> {
+  const Startingpage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -146,12 +146,29 @@ class Startingpage extends GetView<HomeController> {
               height: 25,
             ),
             //Recommendrd Courses
-            const Text(
-              "Recommendrd Courses",
-              style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 29, 64, 91)),
+            Row(
+              children: const [
+                Text(
+                  "Recommendrd Courses",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 29, 64, 91)),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 120),
+                  child: InkWell(
+                    child: Text(
+                      "See All",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color.fromARGB(255, 42, 86, 121),
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 25,
@@ -169,12 +186,29 @@ class Startingpage extends GetView<HomeController> {
                     return const RecommendrdCourses();
                   }),
             ),
-            const Text(
-              "Recommendrd Bootcamps",
-              style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 29, 64, 91)),
+            Row(
+              children: const [
+                Text(
+                  "Recommendrd Bootcamps",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 29, 64, 91)),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 100),
+                  child: InkWell(
+                    child: Text(
+                      "See All",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color.fromARGB(255, 42, 86, 121),
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 25,
@@ -193,17 +227,32 @@ class Startingpage extends GetView<HomeController> {
                   }),
             ),
             // Recommended Training Projects
-            const Text(
-              "Recommended Training Projects ",
-              style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 29, 64, 91)),
-            ),
+            Row(children: const [
+              Text(
+                "Recommended Training Projects ",
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 29, 64, 91)),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 45),
+                child: InkWell(
+                  child: Text(
+                    "See All",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color.fromARGB(255, 42, 86, 121),
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ),
+            ]),
             const SizedBox(
               height: 25,
             ),
-            Container(
+            SizedBox(
               width: double.maxFinite,
               height: 200,
               child: ListView.separated(

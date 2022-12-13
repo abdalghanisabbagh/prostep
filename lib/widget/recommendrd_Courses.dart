@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
+import 'package:prostep1/presentation/Teacher/teacher.dart';
+import 'package:prostep1/teacher_information/teacher_information_topbar.dart';
+
+import '../presentation/resources/page_transition.dart';
 
 class RecommendrdCourses extends StatefulWidget {
   const RecommendrdCourses({super.key});
@@ -35,13 +40,18 @@ class _RecommendrdCoursesState extends State<RecommendrdCourses> {
         const SizedBox(
           height: 7,
         ),
-        const Text(
-          "Abdo sabbagh",
-          maxLines: 1,
-          style: TextStyle(
-            color: Color.fromARGB(255, 102, 109, 115),
-            fontWeight: FontWeight.bold,
-            fontSize: 11,
+        InkWell(
+          onTap: () {
+            Get.to(const TeacherInfoTopbar(), transition: Transition.downToUp);
+          },
+          child: const Text(
+            "Abdo sabbagh",
+            maxLines: 1,
+            style: TextStyle(
+              color: Color.fromARGB(255, 102, 109, 115),
+              fontWeight: FontWeight.bold,
+              fontSize: 11,
+            ),
           ),
         ),
         const SizedBox(
