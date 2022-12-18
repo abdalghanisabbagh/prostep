@@ -5,14 +5,12 @@ import 'package:prostep1/presentation/login/login_view.dart';
 import 'package:prostep1/presentation/main/BottomBar.dart';
 import 'package:prostep1/presentation/main/filtering.dart';
 import 'package:prostep1/presentation/onboarding/view/onboarding_view.dart';
+import 'package:prostep1/presentation/profile/editprofile/main_editprofile.dart';
 import 'package:prostep1/presentation/profile/main_profile.dart';
 import 'package:prostep1/presentation/registere/register_view.dart';
 import 'package:prostep1/presentation/splash/splash_view_animation.dart';
 import 'package:prostep1/presentation/store_details/store_details_view.dart';
-import 'package:prostep1/teacher_information/teacher_information_topbar.dart';
-
-import '../profile/main_profile.dart';
-import '../profile/main_profile.dart';
+import 'package:prostep1/presentation/teacher_information/teacher_information_topbar.dart';
 
 class Routes {
   static const String splashRoute = "/";
@@ -28,20 +26,22 @@ class Routes {
   static const String teacherinformation = "/teacherinformation";
   static const String teacherinfotopbar = "/teacherinfotopbar";
   static const String mainProfileScreen = "/mainProfileScreen";
+  static const String maineditprofile = "/maineditprofile";
 
-  static String getsplashRoute() => '$splashRoute';
-  static String getloginRoute() => '$loginRoute';
-  static String getregisterRoute() => '$registerRoute';
-  static String getforgetpasswordRoute() => '$forgetpasswordRoute';
-  static String getmainRoute() => '$mainRoute';
-  static String getstoreDetailsRoute() => '$storeDetailsRoute';
-  static String getonbording() => '$onbording';
-  static String getsplashviewanimation() => '$splashviewanimation';
-  static String getfiltering() => '$filtering';
-  static String getsetting() => '$setting';
-  static String getteacherinformation() => '$teacherinformation';
-  static String getteacherinfotopbar() => '$teacherinfotopbar';
-  static String getmainProfileScreen() => '$mainProfileScreen';
+  static String getsplashRoute() => splashRoute;
+  static String getloginRoute() => loginRoute;
+  static String getregisterRoute() => registerRoute;
+  static String getforgetpasswordRoute() => forgetpasswordRoute;
+  static String getmainRoute() => mainRoute;
+  static String getstoreDetailsRoute() => storeDetailsRoute;
+  static String getonbording() => onbording;
+  static String getsplashviewanimation() => splashviewanimation;
+  static String getfiltering() => filtering;
+  static String getsetting() => setting;
+  static String getteacherinformation() => teacherinformation;
+  static String getteacherinfotopbar() => teacherinfotopbar;
+  static String getmainProfileScreen() => mainProfileScreen;
+  static String getmaineditprofile() => maineditprofile;
 
   static List<GetPage> routes = [
     // GetPage(name: splashRoute, page: () => SplashView()),
@@ -89,6 +89,10 @@ class Routes {
     GetPage(
         name: mainProfileScreen,
         page: () => const MainProfileScreen(),
+        transition: Transition.upToDown),
+    GetPage(
+        name: maineditprofile,
+        page: () => const MainEditProfile(),
         transition: Transition.upToDown),
 
     // GetPage(

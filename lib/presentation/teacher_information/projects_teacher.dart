@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../widget/courses_teacher.dart';
+import '../../widget/courses_teacher.dart';
 
-class CoursesTeacher extends StatefulWidget {
-  const CoursesTeacher({super.key});
+class ProjectsTeacher extends StatefulWidget {
+  const ProjectsTeacher({super.key});
 
   @override
-  State<CoursesTeacher> createState() => _CoursesTeacherState();
+  State<ProjectsTeacher> createState() => _ProjectsTeacherState();
 }
 
-class _CoursesTeacherState extends State<CoursesTeacher> {
+class _ProjectsTeacherState extends State<ProjectsTeacher> {
   @override
   Widget build(BuildContext context) {
     return Padding(

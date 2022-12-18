@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 
-import '../teacher_information/teacher_information_topbar.dart';
+import '../presentation/teacher_information/teacher_information_topbar.dart';
 
 class RecommendedTrainingProjects extends StatefulWidget {
   const RecommendedTrainingProjects({super.key});

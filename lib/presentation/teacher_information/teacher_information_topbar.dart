@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:prostep1/teacher_information/bootcamps_teacher.dart';
-import 'package:prostep1/teacher_information/courses_teacher.dart';
-import 'package:prostep1/teacher_information/home_teacher.dart';
-import 'package:prostep1/teacher_information/projects_teacher.dart';
+import 'package:prostep1/presentation/teacher_information/bootcamps_teacher.dart';
+import 'package:prostep1/presentation/teacher_information/courses_teacher.dart';
+import 'package:prostep1/presentation/teacher_information/home_teacher.dart';
+import 'package:prostep1/presentation/teacher_information/projects_teacher.dart';
 
 class TeacherInfoTopbar extends StatefulWidget {
   const TeacherInfoTopbar({super.key});
