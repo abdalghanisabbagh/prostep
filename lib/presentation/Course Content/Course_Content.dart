@@ -1,5 +1,8 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:prostep1/presentation/resources/assets_manger.dart';
 import 'package:video_player/video_player.dart';
 
 class CourseContent extends StatefulWidget {
@@ -55,18 +58,8 @@ class _CourseContentState extends State<CourseContent> {
     _controller.dispose();
     chewieController!.dispose();
   }
-  /* @override
-  void initState() {
-    _controller = VideoPlayerController.network(
-        "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
-        videoPlayerOptions: VideoPlayerOptions())
-      ..initialize().then((_) {
-        setState(() {
-          _controller.play();
-        });
-      });
-    super.initState();
-  }*/
+
+  late double rate = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -93,37 +86,268 @@ class _CourseContentState extends State<CourseContent> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            width: double.maxFinite,
-            height: 250,
-            child: chewieController != null &&
-                chewieController!.videoPlayerController.value.isInitialized
-            ? Chewie(controller: chewieController!)
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  CircularProgressIndicator(),
-                  SizedBox(
-                    height: 20,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: double.maxFinite,
+              height: 250,
+              child: chewieController != null &&
+                      chewieController!
+                          .videoPlayerController.value.isInitialized
+                  ? Chewie(controller: chewieController!)
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        CircularProgressIndicator(),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text('looding')
+                      ],
+                    ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 18,
                   ),
-                  Text('looding')
+                  const Text(
+                    'Introduction to Dart essentials',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    'PHP Web Developer using frameworks .',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 102, 109, 115),
+                      fontSize: 12,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Text('$rate'),
+                      RatingBar.builder(
+                        itemSize: 15,
+                        initialRating: 0,
+                        minRating: 1,
+                        direction: Axis.horizontal,
+                        allowHalfRating: true,
+                        itemCount: 5,
+                        itemPadding:
+                            const EdgeInsets.symmetric(horizontal: 2.0),
+                        itemBuilder: (context, _) => const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        ),
+                        onRatingUpdate: (rating) {
+                          setState(() {
+                            rate = rating;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    children: const [
+                      Text(
+                        'Created By : ',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 42, 86, 121),
+                          fontSize: 15,
+                        ),
+                      ),
+                      Text(
+                        'Hassan Fullah',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 42, 86, 121),
+                          fontSize: 15,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    height: 40,
+                    child: ListTile(
+                      leading: SvgPicture.asset(
+                        'assets/svg/!!!!.svg',
+                        width: 25,
+                        height: 25,
+                      ),
+                      contentPadding: const EdgeInsets.only(left: 0.0),
+                      title: const Text(
+                        'Last updated 09/2021',
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                      ),
+                      minLeadingWidth: 25,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                    child: ListTile(
+                      leading: SvgPicture.asset(
+                        'assets/svg/language.svg',
+                        width: 25,
+                        height: 25,
+                      ),
+                      contentPadding: const EdgeInsets.only(left: 0.0),
+                      title: const Text(
+                        'English',
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                      ),
+                      minLeadingWidth: 25,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                    child: ListTile(
+                      contentPadding: EdgeInsets.only(left: 0.0, right: 275),
+                      title: Text(
+                        '\$3.99',
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                      ),
+                      trailing: Text(
+                        '\$10.99',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 102, 109, 115),
+                            fontSize: 14,
+                            decoration: TextDecoration.lineThrough),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 29, 64, 91),
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 29, 64, 91),
+                              width: 1.5),
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                        width: 140,
+                        height: 35,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: const Text(
+                            "Buy now ",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 40,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 29, 64, 91),
+                              width: 2),
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                        width: 140,
+                        height: 35,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: const Text(
+                            " Add to cart",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 29, 64, 91),
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'What you’ll learn',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 40,
+                    child: ListTile(
+                      leading: SvgPicture.asset(
+                        'assets/svg/material-symbols_check-small.svg',
+                        width: 25,
+                        height: 25,
+                      ),
+                      contentPadding: const EdgeInsets.only(left: 0.0),
+                      title: const Text(
+                        'Programming Fundamental',
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                    child: ListTile(
+                      leading: SvgPicture.asset(
+                        'assets/svg/material-symbols_check-small.svg',
+                        width: 25,
+                        height: 25,
+                      ),
+                      contentPadding: const EdgeInsets.only(left: 0.0),
+                      title: const Text(
+                        'Learn Dart from the ground up , step-by-step .',
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                    child: ListTile(
+                      leading: SvgPicture.asset(
+                        'assets/svg/material-symbols_check-small.svg',
+                        width: 25,
+                        height: 25,
+                      ),
+                      contentPadding: const EdgeInsets.only(left: 0.0),
+                      title: const Text(
+                        'Everything you need in Dart to get started with Flutter .',
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-          )
-        ],
+            ),
+          ],
+        ),
       ),
-    );
-  }
-
-  Widget ved() {
-    return Container(
-      width: 350,
-      height: 350,
-      child: _controller.value.isInitialized
-          ? VideoPlayer(_controller)
-          : Container(),
     );
   }
 }
