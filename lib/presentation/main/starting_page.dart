@@ -217,6 +217,7 @@ class Startingpage extends GetView<HomeController> {
               height: 200,
               width: double.maxFinite,
               child: ListView.separated(
+                
                   separatorBuilder: (context, index) => const SizedBox(
                         width: 12,
                       ),

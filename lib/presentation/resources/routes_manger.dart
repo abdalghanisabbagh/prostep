@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 import 'package:prostep1/bindings/home_binding.dart';
+import 'package:prostep1/presentation/Course%20Content/Course_Content.dart';
 import 'package:prostep1/presentation/forgetpassword/forget_password_view.dart';
 import 'package:prostep1/presentation/login/login_view.dart';
 import 'package:prostep1/presentation/main/BottomBar.dart';
 import 'package:prostep1/presentation/main/filtering.dart';
 import 'package:prostep1/presentation/onboarding/view/onboarding_view.dart';
-import 'package:prostep1/presentation/profile/editprofile/main_editprofile.dart';
+import 'package:prostep1/presentation/profile/Edit%20Profile/edit_profile.dart';
 import 'package:prostep1/presentation/profile/main_profile.dart';
 import 'package:prostep1/presentation/registere/register_view.dart';
 import 'package:prostep1/presentation/splash/splash_view_animation.dart';
@@ -27,6 +28,7 @@ class Routes {
   static const String teacherinfotopbar = "/teacherinfotopbar";
   static const String mainProfileScreen = "/mainProfileScreen";
   static const String maineditprofile = "/maineditprofile";
+  static const String coursecontent = "/coursecontent";
 
   static String getsplashRoute() => splashRoute;
   static String getloginRoute() => loginRoute;
@@ -42,6 +44,8 @@ class Routes {
   static String getteacherinfotopbar() => teacherinfotopbar;
   static String getmainProfileScreen() => mainProfileScreen;
   static String getmaineditprofile() => maineditprofile;
+    static String getcoursecontent() => coursecontent;
+
 
   static List<GetPage> routes = [
     // GetPage(name: splashRoute, page: () => SplashView()),
@@ -92,8 +96,13 @@ class Routes {
         transition: Transition.upToDown),
     GetPage(
         name: maineditprofile,
-        page: () => const MainEditProfile(),
+        page: () => const EditProfile(),
         transition: Transition.upToDown),
+        GetPage(
+        name: coursecontent,
+        page: () => const CourseContent(),
+        transition: Transition.upToDown),
+
 
     // GetPage(
     //   name: popularFood,
