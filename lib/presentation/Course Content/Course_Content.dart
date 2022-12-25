@@ -2,7 +2,9 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:prostep1/domain/course_section_models.dart';
 import 'package:prostep1/presentation/resources/assets_manger.dart';
+import 'package:prostep1/presentation/resources/fonts_manger.dart';
 import 'package:video_player/video_player.dart';
 
 class CourseContent extends StatefulWidget {
@@ -13,8 +15,10 @@ class CourseContent extends StatefulWidget {
 }
 
 class _CourseContentState extends State<CourseContent> {
+  List<SectionMenu> data = [];
   late VideoPlayerController _controller;
   ChewieController? chewieController;
+  late ScrollController _scrollController;
   Future<void> loadVideoPlayer() async {
     _controller = VideoPlayerController.network(
         "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4");
@@ -49,11 +53,14 @@ class _CourseContentState extends State<CourseContent> {
   void initState() {
     super.initState();
     loadVideoPlayer();
+    datalist.forEach((element) {
+      data.add(SectionMenu.fromJSon(element));
+      _scrollController = ScrollController();
+    });
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _controller.dispose();
     chewieController!.dispose();
@@ -342,12 +349,99 @@ class _CourseContentState extends State<CourseContent> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'Curriculum',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Container(
+                    height: 50 * data.length.toDouble(),
+                    width: double.maxFinite,
+                    child: ListView.builder(
+                      controller: _scrollController,
+                      itemCount: data.length,
+                      itemBuilder: (BuildContext context, int index) =>
+                          _bulidlist(data[index]),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'Requirements',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 35,
+                    child: ListTile(
+                      leading: Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: SvgPicture.asset(
+                          'assets/svg/Ellipse15.svg',
+                        ),
+                      ),
+                      contentPadding: const EdgeInsets.only(left: 0.0),
+                      title: const Text(
+                        'Should Know Dart essentials',
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 35,
+                    child: ListTile(
+                      leading: Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: SvgPicture.asset(
+                          'assets/svg/Ellipse15.svg',
+                        ),
+                      ),
+                      contentPadding: const EdgeInsets.only(left: 0.0),
+                      title: const Text(
+                        'Coding in C++ some essentail ideas ',
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _bulidlist(SectionMenu list) {
+    if (list.section.isEmpty) {
+      return Builder(builder: (context) {
+        return ListTile(
+          title: Text(
+            list.name,
+            style: const TextStyle(
+                color: Color.fromARGB(255, 0, 0, 0),
+                fontSize: 14,
+                fontWeight: FontWeight.bold),
+          ),
+          // subtitle: Text(list.time),
+        );
+      });
+    }
+    return ExpansionTile(
+      title: Text(
+        list.name,
+        style: const TextStyle(
+            fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black),
+      ),
+      children: list.section.map(_bulidlist).toList(),
     );
   }
 }
