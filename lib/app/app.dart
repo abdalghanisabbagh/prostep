@@ -19,9 +19,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      
       debugShowCheckedModeBanner: false,
       getPages: Routes.routes,
-      initialRoute: Routes.getcoursecontent(),
+      initialRoute: Routes.getaboutthisCourse(),
       theme: getApplicationTheme(),
     );
   }

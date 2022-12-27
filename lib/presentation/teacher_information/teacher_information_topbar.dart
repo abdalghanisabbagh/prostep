@@ -33,7 +33,7 @@ class _TeacherInfoTopbarState extends State<TeacherInfoTopbar> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 85.0, left: 150),
-                    child: Container(
+                    child: SizedBox(
                       width: 80,
                       height: 80,
                       child: CircleAvatar(

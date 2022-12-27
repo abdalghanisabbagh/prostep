@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:prostep1/bindings/home_binding.dart';
 import 'package:prostep1/presentation/Course%20Content/Course_Content.dart';
+import 'package:prostep1/presentation/Course%20Content/aboutthiscoures.dart';
+import 'package:prostep1/presentation/Course%20Content/course_content1.dart';
 import 'package:prostep1/presentation/forgetpassword/forget_password_view.dart';
 import 'package:prostep1/presentation/login/login_view.dart';
 import 'package:prostep1/presentation/main/BottomBar.dart';
@@ -29,6 +31,8 @@ class Routes {
   static const String mainProfileScreen = "/mainProfileScreen";
   static const String maineditprofile = "/maineditprofile";
   static const String coursecontent = "/coursecontent";
+  static const String coursecontent1 = "/coursecontent1";
+  static const String aboutthisCourse = "/aboutthisCourse";
 
   static String getsplashRoute() => splashRoute;
   static String getloginRoute() => loginRoute;
@@ -44,8 +48,9 @@ class Routes {
   static String getteacherinfotopbar() => teacherinfotopbar;
   static String getmainProfileScreen() => mainProfileScreen;
   static String getmaineditprofile() => maineditprofile;
-    static String getcoursecontent() => coursecontent;
-
+  static String getcoursecontent() => coursecontent;
+  static String getcoursecontent1() => coursecontent1;
+  static String getaboutthisCourse() => aboutthisCourse;
 
   static List<GetPage> routes = [
     // GetPage(name: splashRoute, page: () => SplashView()),
@@ -98,11 +103,18 @@ class Routes {
         name: maineditprofile,
         page: () => const EditProfile(),
         transition: Transition.upToDown),
-        GetPage(
+    GetPage(
         name: coursecontent,
         page: () => const CourseContent(),
         transition: Transition.upToDown),
-
+    GetPage(
+        name: coursecontent1,
+        page: () => const CourseContent1(),
+        transition: Transition.upToDown),
+    GetPage(
+        name: aboutthisCourse,
+        page: () => const AboutThisCourse(),
+        transition: Transition.upToDown),
 
     // GetPage(
     //   name: popularFood,

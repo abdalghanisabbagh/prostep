@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prostep1/domain/course_section_models.dart';
-import 'package:prostep1/presentation/resources/assets_manger.dart';
-import 'package:prostep1/presentation/resources/fonts_manger.dart';
 import 'package:video_player/video_player.dart';
 
 class CourseContent extends StatefulWidget {
@@ -16,9 +14,9 @@ class CourseContent extends StatefulWidget {
 
 class _CourseContentState extends State<CourseContent> {
   List<SectionMenu> data = [];
+  bool icon1 = true;
   late VideoPlayerController _controller;
   ChewieController? chewieController;
-  late ScrollController _scrollController;
   Future<void> loadVideoPlayer() async {
     _controller = VideoPlayerController.network(
         "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4");
@@ -55,7 +53,6 @@ class _CourseContentState extends State<CourseContent> {
     loadVideoPlayer();
     datalist.forEach((element) {
       data.add(SectionMenu.fromJSon(element));
-      _scrollController = ScrollController();
     });
   }
 
@@ -359,15 +356,12 @@ class _CourseContentState extends State<CourseContent> {
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
                   ),
-                  Container(
-                    height: 50 * data.length.toDouble(),
-                    width: double.maxFinite,
-                    child: ListView.builder(
-                      controller: _scrollController,
-                      itemCount: data.length,
-                      itemBuilder: (BuildContext context, int index) =>
-                          _bulidlist(data[index]),
-                    ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: data.length,
+                    itemBuilder: (BuildContext context, int index) =>
+                        _bulidlist(data[index]),
                   ),
                   const SizedBox(
                     height: 30,
@@ -395,8 +389,8 @@ class _CourseContentState extends State<CourseContent> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 35,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom:20.0),
                     child: ListTile(
                       leading: Padding(
                         padding: const EdgeInsets.only(top: 8.0),
@@ -425,19 +419,32 @@ class _CourseContentState extends State<CourseContent> {
       return Builder(builder: (context) {
         return ListTile(
           title: Text(
-            list.name,
+            list.name.toString(),
             style: const TextStyle(
                 color: Color.fromARGB(255, 0, 0, 0),
                 fontSize: 14,
                 fontWeight: FontWeight.bold),
           ),
-          // subtitle: Text(list.time),
+          minLeadingWidth: 20,
+          subtitle: Text(list.time.toString()),
+          leading: Text(
+            list.number.toString(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
         );
       });
     }
     return ExpansionTile(
+      onExpansionChanged: ((value) => setState(() {
+            icon1 = !icon1;
+          })),
+      trailing: icon1
+          ? SvgPicture.asset(
+              'assets/svg/Vector(3).svg',
+            )
+          : SvgPicture.asset('assets/svg/mdi_minus-circle-outline.svg'),
       title: Text(
-        list.name,
+        list.name.toString(),
         style: const TextStyle(
             fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black),
       ),

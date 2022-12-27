@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 
 class SectionMenu {
-  late String name;
+  String? name;
   List<SectionMenu> section = [];
-  IconData? iconData;
- // late String time;
+  String? time;
+  String? number;
 
   SectionMenu({
     required this.name,
     required this.section,
-    required this.iconData,
+    required this.time,
+    required this.number,
   });
 
   SectionMenu.fromJSon(Map<String, dynamic> json) {
-    name = json['name'];
-    //time = json['time'];
-    iconData = json['icondate'];
+    name = json['name']!;
+    time = json['time'] ?? "00";
+    number = json['number'] ?? "00";
+
     if (json['section'] != null) {
       section.clear();
-      json['section'].forEach((v) {
+      json['section']!.forEach((v) {
         section.add(SectionMenu.fromJSon(v));
       });
     }
@@ -28,29 +30,42 @@ class SectionMenu {
 List datalist = [
   {
     "name": "Section 1 - Introduction",
-    "iconData": Icons.add,
     "section": [
-      {"name": "Code of the Course ", "time": "02:56"},
-      {"name": "Mac Installation"},
-      {"name": "Windows Installation"},
+      {
+        "name": "Code of the Course ",
+        "time": "02:56",
+        "number": "1",
+      },
+      {
+        "name": "Mac Installation",
+        "time": "02:56",
+        "number": "2",
+      },
+      {
+        "name": "Windows Installation",
+        "time": "02:56",
+        "number": "3",
+      },
     ]
   },
   {
     "name": "Section 2 - Introduction",
-    "iconData": Icons.add,
     "section": [
-      {"name": "Code of the Course "},
-      {"name": "Mac Installation"},
-      {"name": "Windows Installation"},
-    ]
-  },
-  {
-    "name": "Section 3 - Introduction",
-    "iconData": Icons.add,
-    "section": [
-      {"name": "Code of the Course "},
-      {"name": "Mac Installation"},
-      {"name": "Windows Installation"},
+      {
+        "name": "Code of the Course ",
+        "time": "02:56",
+        "number": "1",
+      },
+      {
+        "name": "Mac Installation",
+        "time": "02:56",
+        "number": "2",
+      },
+      {
+        "name": "Windows Installation",
+        "time": "02:56",
+        "number": "3",
+      },
     ]
   },
 ];
