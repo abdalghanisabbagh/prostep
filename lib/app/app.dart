@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
       
       debugShowCheckedModeBanner: false,
       getPages: Routes.routes,
-      initialRoute: Routes.getaboutthisCourse(),
+      initialRoute: Routes.getcomments(),
       theme: getApplicationTheme(),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:prostep1/bindings/home_binding.dart';
+import 'package:prostep1/domain/comments.dart';
 import 'package:prostep1/presentation/Course%20Content/Course_Content.dart';
 import 'package:prostep1/presentation/Course%20Content/aboutthiscoures.dart';
+import 'package:prostep1/presentation/Course%20Content/comments.dart';
 import 'package:prostep1/presentation/Course%20Content/course_content1.dart';
 import 'package:prostep1/presentation/forgetpassword/forget_password_view.dart';
 import 'package:prostep1/presentation/login/login_view.dart';
@@ -33,6 +35,7 @@ class Routes {
   static const String coursecontent = "/coursecontent";
   static const String coursecontent1 = "/coursecontent1";
   static const String aboutthisCourse = "/aboutthisCourse";
+  static const String comments = "/comments";
 
   static String getsplashRoute() => splashRoute;
   static String getloginRoute() => loginRoute;
@@ -51,6 +54,7 @@ class Routes {
   static String getcoursecontent() => coursecontent;
   static String getcoursecontent1() => coursecontent1;
   static String getaboutthisCourse() => aboutthisCourse;
+  static String getcomments() => comments;
 
   static List<GetPage> routes = [
     // GetPage(name: splashRoute, page: () => SplashView()),
@@ -114,6 +118,10 @@ class Routes {
     GetPage(
         name: aboutthisCourse,
         page: () => const AboutThisCourse(),
+        transition: Transition.upToDown),
+    GetPage(
+        name: comments,
+        page: () => const CommentsView(),
         transition: Transition.upToDown),
 
     // GetPage(
