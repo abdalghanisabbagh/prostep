@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:prostep1/domain/comments.dart';
+import 'package:prostep1/presentation/Course%20Content/responses.dart';
 
 class CommentsView extends StatefulWidget {
   const CommentsView({super.key});
@@ -21,36 +23,37 @@ class _CommentViewsState extends State<CommentsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Color(0xff1D405B),
-              ),
-              onPressed: () {}),
-          centerTitle: false,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: const Text(
-            "Comments",
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 18,
-              color: Color(
-                0xff1D405B,
-              ),
+      appBar: AppBar(
+        leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Color(0xff1D405B),
+            ),
+            onPressed: () {}),
+        centerTitle: false,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text(
+          "Comments",
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 18,
+            color: Color(
+              0xff1D405B,
             ),
           ),
         ),
-        body: Container(
-          height: 200 * data.length.toDouble(),
-          width: double.maxFinite,
-          child: ListView.builder(
-            itemCount: data.length,
-            itemBuilder: (BuildContext context, int index) =>
-                _commentslist(data[index]),
-          ),
-        ));
+      ),
+      body: Container(
+        height: 200 * data.length.toDouble(),
+        width: double.maxFinite,
+        child: ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (BuildContext context, int index) =>
+              _commentslist(data[index]),
+        ),
+      ),
+    );
   }
 
   Widget _commentslist(Comments list) {
@@ -112,11 +115,16 @@ class _CommentViewsState extends State<CommentsView> {
           const SizedBox(
             height: 15,
           ),
-          Text(
-            "${list.numresponse.toString()} response",
-            style: const TextStyle(
-                color: Color.fromARGB(255, 42, 86, 121),
-                fontWeight: FontWeight.w700),
+          InkWell(
+            onTap: () {
+              Get.off(const ResponsesView());
+            },
+            child: Text(
+              "${list.numresponse.toString()} response",
+              style: const TextStyle(
+                  color: Color.fromARGB(255, 42, 86, 121),
+                  fontWeight: FontWeight.w700),
+            ),
           ),
           const Padding(
             padding: EdgeInsets.only(right: 10.0),
