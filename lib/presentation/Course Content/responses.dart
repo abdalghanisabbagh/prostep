@@ -1,22 +1,30 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:prostep1/presentation/resources/routes_manger.dart';
 
 import '../../domain/comments.dart';
 
 class ResponsesView extends StatefulWidget {
-  const ResponsesView({super.key});
-
+  ResponsesView({super.key, required this.commentId});
+  int commentId;
   @override
   State<ResponsesView> createState() => _ResponsesViewState();
 }
 
 class _ResponsesViewState extends State<ResponsesView> {
   List<Comments> data = [];
+
   @override
   void initState() {
     super.initState();
-    commentslist.forEach((element) {
-      data.add(Comments.fromJSon(element));
-    });
+
+    for (int i = 0; i < commentslist.length; i++) {
+      if (commentslist[i]['id'] == widget.commentId.toString()) {
+        data.add(Comments.fromJSon(commentslist[i]));
+      }
+    }
   }
 
   @override
@@ -28,7 +36,9 @@ class _ResponsesViewState extends State<ResponsesView> {
             Icons.arrow_back,
             color: Color(0xff1D405B),
           ),
-          onPressed: (() {}),
+          onPressed: (() {
+            Get.offNamed(Routes.getcomments());
+          }),
         ),
         centerTitle: false,
         backgroundColor: Colors.transparent,
@@ -45,7 +55,7 @@ class _ResponsesViewState extends State<ResponsesView> {
         ),
       ),
       body: ListView.builder(
-        itemCount: data.length,
+        itemCount: data.reversed.length,
         itemBuilder: (BuildContext context, int index) =>
             _commentsandresponselist(data[index]),
       ),
@@ -53,7 +63,8 @@ class _ResponsesViewState extends State<ResponsesView> {
   }
 
   Widget _commentsandresponselist(Comments list) {
-    if (list.responses.isEmpty) {
+    print(list.id);
+    if (list.name!.isEmpty) {
       return const Text("no responses");
     }
     return Column(
@@ -124,9 +135,9 @@ class _ResponsesViewState extends State<ResponsesView> {
             ),
           ),
         ),
-         Column(
-                children: list.responses.map(_commentsandresponselist).toList(),
-              )
+        Column(
+          children: list.responses.map(_commentsandresponselist).toList(),
+        )
       ],
     );
   }

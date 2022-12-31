@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prostep1/domain/comments.dart';
-import 'package:prostep1/presentation/Course%20Content/responses.dart';
+import 'package:prostep1/presentation/resources/routes_manger.dart';
 
 class CommentsView extends StatefulWidget {
   const CommentsView({super.key});
@@ -15,9 +15,9 @@ class _CommentViewsState extends State<CommentsView> {
   @override
   void initState() {
     super.initState();
-    commentslist.forEach((element) {
-      data.add(Comments.fromJSon(element));
-    });
+    for (int i = 0; i < commentslist.length; i++) {
+      data.add(Comments.fromJSon(commentslist[i]));
+    }
   }
 
   @override
@@ -44,7 +44,7 @@ class _CommentViewsState extends State<CommentsView> {
           ),
         ),
       ),
-      body: Container(
+      body: SizedBox(
         height: 200 * data.length.toDouble(),
         width: double.maxFinite,
         child: ListView.builder(
@@ -117,10 +117,10 @@ class _CommentViewsState extends State<CommentsView> {
           ),
           InkWell(
             onTap: () {
-              Get.off(const ResponsesView());
+              Get.toNamed(Routes.getresponses(list.id!));
             },
             child: Text(
-              "${list.numresponse.toString()} response",
+              "${list.responses.length.toString()} response",
               style: const TextStyle(
                   color: Color.fromARGB(255, 42, 86, 121),
                   fontWeight: FontWeight.w700),

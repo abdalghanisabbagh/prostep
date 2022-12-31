@@ -37,8 +37,7 @@ class Routes {
   static const String coursecontent1 = "/coursecontent1";
   static const String aboutthisCourse = "/aboutthisCourse";
   static const String comments = "/comments";
-    static const String responses = "/responses";
-
+  static const String responses = "/responses";
 
   static String getsplashRoute() => splashRoute;
   static String getloginRoute() => loginRoute;
@@ -58,7 +57,7 @@ class Routes {
   static String getcoursecontent1() => coursecontent1;
   static String getaboutthisCourse() => aboutthisCourse;
   static String getcomments() => comments;
-  static String getresponses() => responses;
+  static String getresponses(int comment) => "$responses?commentId=$comment";
 
   static List<GetPage> routes = [
     // GetPage(name: splashRoute, page: () => SplashView()),
@@ -127,9 +126,13 @@ class Routes {
         name: comments,
         page: () => const CommentsView(),
         transition: Transition.upToDown),
-         GetPage(
+
+    GetPage(
         name: responses,
-        page: () => const ResponsesView(),
+        page: () {
+          var comment = Get.parameters['commentId'];
+          return ResponsesView(commentId: int.parse(comment!));
+        },
         transition: Transition.upToDown),
 
     // GetPage(
