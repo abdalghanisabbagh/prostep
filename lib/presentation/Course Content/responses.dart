@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prostep1/presentation/resources/routes_manger.dart';
+import 'package:prostep1/presentation/resources/showDialog.dart';
 
 import '../../domain/comments.dart';
 
@@ -137,7 +138,8 @@ class _ResponsesViewState extends State<ResponsesView> {
         ),
         Column(
           children: list.responses.map(_commentsandresponselist).toList(),
-        )
+        ),
+      
       ],
     );
   }

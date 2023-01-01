@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prostep1/domain/comments.dart';
 import 'package:prostep1/presentation/resources/routes_manger.dart';
-
 class CommentsView extends StatefulWidget {
   const CommentsView({super.key});
 
@@ -131,7 +130,8 @@ class _CommentViewsState extends State<CommentsView> {
             child: Divider(
               color: Color.fromARGB(50, 42, 86, 121),
             ),
-          )
+          ),
+           
         ],
       ),
     );
