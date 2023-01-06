@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: Routes.routes,
-      initialRoute: Routes.getcomments(),
+      initialRoute: Routes.getsplashviewanimation(),
       theme: getApplicationTheme(),
     );
   }

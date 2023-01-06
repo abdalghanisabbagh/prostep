@@ -18,6 +18,10 @@ import 'package:prostep1/presentation/splash/splash_view_animation.dart';
 import 'package:prostep1/presentation/store_details/store_details_view.dart';
 import 'package:prostep1/presentation/teacher_information/teacher_information_topbar.dart';
 
+import '../chats/contact/chat_page.dart';
+import '../chats/main_chate.dart';
+import '../profile/contact/edit_contact.dart';
+
 class Routes {
   static const String splashRoute = "/";
   static const String loginRoute = "/login";
@@ -38,6 +42,9 @@ class Routes {
   static const String aboutthisCourse = "/aboutthisCourse";
   static const String comments = "/comments";
   static const String responses = "/responses";
+  static const String editContact = "/editeContact";
+  static const String mainChat = "/mainChat";
+  static const String contactChat = "/contactChat";
 
   static String getsplashRoute() => splashRoute;
   static String getloginRoute() => loginRoute;
@@ -58,6 +65,9 @@ class Routes {
   static String getaboutthisCourse() => aboutthisCourse;
   static String getcomments() => comments;
   static String getresponses(int comment) => "$responses?commentId=$comment";
+  static String getEditContact() => editContact;
+  static String getMainChat() => mainChat;
+  static String getContactChat() => contactChat;
 
   static List<GetPage> routes = [
     // GetPage(name: splashRoute, page: () => SplashView()),
@@ -134,6 +144,18 @@ class Routes {
           return ResponsesView(commentId: int.parse(comment!));
         },
         transition: Transition.upToDown),
+    GetPage(
+        name: editContact,
+        page: () => const EditContact(),
+        transition: Transition.fade),
+    GetPage(
+        name: mainChat,
+        page: () => const MainChat(),
+        transition: Transition.fade),
+    GetPage(
+        name: contactChat,
+        page: () => const ChatPage(),
+        transition: Transition.fade),
 
     // GetPage(
     //   name: popularFood,

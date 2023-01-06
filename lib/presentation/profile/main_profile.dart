@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:prostep1/presentation/profile/widgets/info_widget.dart';
+import 'package:prostep1/presentation/resources/routes_manger.dart';
 import 'widgets/experience_widget.dart';
 import 'widgets/peple_recommended.dart';
 import 'widgets/skills_widget.dart';
@@ -44,12 +46,18 @@ class MainProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Positioned(
+                Positioned(
                     right: 10,
                     bottom: -30,
-                    child: Icon(
-                      Icons.edit_outlined,
-                      color: Color.fromARGB(255, 29, 64, 91),
+                    child: GestureDetector(
+                      onTap: () {
+                        print("object");
+                        Get.toNamed(Routes.getmaineditprofile());
+                      },
+                      child: const Icon(
+                        Icons.edit_outlined,
+                        color: Color(0xff1D405B),
+                      ),
                     )),
                 Positioned(
                     right: 10,

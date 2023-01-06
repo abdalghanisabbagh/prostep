@@ -1,10 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:prostep1/presentation/onboarding/view/onboarding_view.dart';
-import 'package:prostep1/presentation/resources/routes_manger.dart';
-
-import '../resources/page_transition.dart';
-
+import 'package:prostep1/presentation/resources/color_manger.dart';
 class MyCustomSplashScreen extends StatefulWidget {
   @override
   _MyCustomSplashScreenState createState() => _MyCustomSplashScreenState();
@@ -13,7 +9,7 @@ class MyCustomSplashScreen extends StatefulWidget {
 class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
     with TickerProviderStateMixin {
   double _fontSize = 2;
-  double _containerSize = 1.5;
+  double _containerSize =3;
   double _textOpacity = 0.0;
   double _containerOpacity = 0.0;
 
@@ -45,18 +41,18 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
 
     Timer(const Duration(seconds: 2), () {
       setState(() {
-        _containerSize = 2;
+        _containerSize = 1;
         _containerOpacity = 1;
       });
     });
 
     Timer(const Duration(seconds: 5), () {
       setState(() {
-        Navigator.pushReplacement(
+      /*  Navigator.pushReplacement(
           context,
           PageTransition(const OnBoardingView(),Curves.bounceInOut),
-        );
-        // Navigator.pushReplacementNamed(context, Routes.onbording);
+        );*/
+        
       });
     });
   }
@@ -69,12 +65,11 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 42, 86, 121),
-      // backgroundColor: Colors.deepPurple,
+      backgroundColor:ColorManger.backgroundsplash,
       body: Stack(
         children: [
           Column(
@@ -82,16 +77,16 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
               AnimatedContainer(
                   duration: const Duration(milliseconds: 4000), //text
                   curve: Curves.fastLinearToSlowEaseIn,
-                  height: _height / _fontSize),
+                  height: height / _fontSize),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 2000),
                 opacity: _textOpacity,
-                child: Text(
-                  'ProStep',
+                child: const Text(
+                  'Grow with us! ',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Color.fromARGB(155, 42, 86, 121),
                     fontWeight: FontWeight.bold,
-                    fontSize: animation1.value,
+                    fontSize: 20,
                   ),
                 ),
               ),
@@ -99,24 +94,22 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
           ),
           Center(
             child: AnimatedOpacity(
-              duration: const Duration(milliseconds: 4000),
+              duration: const Duration(milliseconds: 6000),
               curve: Curves.fastLinearToSlowEaseIn,
               opacity: _containerOpacity,
               child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 4000),
+                  duration: const Duration(milliseconds: 6000),
                   curve: Curves.fastLinearToSlowEaseIn,
-                  height: _width / _containerSize,
-                  width: _width / _containerSize,
+                  height: width / _containerSize,
+                  width: width / _containerSize,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: ColorManger.backgroundsplash,
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child:
                       Image.asset('assets/images/prostepsplash.png')
-                  /* child: Text(
-                  'YOUR APP\'S LOGO',
-                ),*/
+                
                   ),
             ),
           ),

@@ -13,4 +13,5 @@ class ColorManger {
   static Color gray2 = const Color(0xff797979);
   static Color white = const Color(0xffffffff);
   static Color error = const Color(0xffe61f34);
+  static Color backgroundsplash = const Color.fromARGB(255, 229, 229, 229);
 }
