@@ -14,7 +14,7 @@ class EditContact extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(75),
-          child: MainAppBar(
+          child: mainAppBar(
             text: "Edit Contact info",
             icon: const Icon(
               Icons.arrow_back,

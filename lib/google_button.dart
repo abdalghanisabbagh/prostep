@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:prostep1/presentation/resources/color_manger.dart';
 import 'package:prostep1/text_widget.dart';
 
 class GoogleButton extends StatelessWidget {
@@ -6,23 +8,22 @@ class GoogleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 60,
       child: Material(
-        borderRadius: BorderRadius.circular(15),
-        color: const Color.fromARGB(255, 134, 123, 139),
+        borderRadius: BorderRadius.circular(12),
+        color: ColorManger.loginbuttonbackgroundcolor,
         child: InkWell(
           onTap: () {},
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Icon(
-              Icons.alternate_email_sharp,
-              color: Colors.white,
-            ),
+            SvgPicture.asset('assets/svg/Group.svg'),
             const SizedBox(
               width: 8,
             ),
             TextWidget(
-                text: 'Log In with Gmail', color: Colors.white, textSize: 18)
+                text: 'Log In with Gmail',
+                color: ColorManger.loginbuttontextcolor,
+                textSize: 18)
           ]),
         ),
       ),

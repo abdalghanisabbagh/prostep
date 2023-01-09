@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:prostep1/presentation/registere/register_view.dart';
-
+import 'package:get/get.dart';
 import '../../auth_button.dart';
 import '../../google_button.dart';
 import '../../text_widget.dart';
@@ -31,9 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _submitFormOnLogin() {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
-    if (isValid) {
-      print('THe form is valid');
-    }
+    if (isValid) {}
   }
 
   @override
@@ -177,7 +174,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Align(
                   alignment: Alignment.topRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(Routes.mainRoute);
+                    },
                     child: const Text(
                       'Forget password?',
                       maxLines: 1,
@@ -235,11 +234,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                /*   AuthButton(
-                  fct: () {},
-                  buttonText: 'Continue as a guest',
-                  primary: Colors.black,
-                ),*/
                 const SizedBox(
                   height: 10,
                 ),

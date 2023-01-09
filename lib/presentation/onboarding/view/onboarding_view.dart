@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:prostep1/presentation/login/login_view.dart';
+import 'package:get/get.dart';
 import 'package:prostep1/presentation/resources/assets_manger.dart';
 import 'package:prostep1/presentation/resources/constants.dart';
+import 'package:prostep1/presentation/resources/routes_manger.dart';
 import 'package:prostep1/presentation/resources/stringes_manger.dart';
 import 'package:prostep1/presentation/resources/values_manger.dart';
 import '../../../domain/models.dart';
-import '../../resources/page_transition.dart';
 
 final PageController _pageController = PageController();
 int _currentIndex = 0;
@@ -49,7 +49,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
 class OnBoardingPAge extends StatelessWidget {
   final SliderObject _sliderObject;
-  OnBoardingPAge(this._sliderObject, {Key? key}) : super(key: key);
+  const OnBoardingPAge(this._sliderObject, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,21 +59,22 @@ class OnBoardingPAge extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(_sliderObject.image),
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 colorFilter: ColorFilter.mode(
                     Colors.red.withOpacity(0.5), BlendMode.dstATop),
               ),
               gradient: const LinearGradient(
                   colors: [
-                    Color.fromARGB(255, 60, 60, 60),
-                    // Color.fromARGB(255, 130, 17, 17),
-                    Color.fromARGB(255, 17, 54, 82),
+                    Color.fromARGB(0, 208, 208, 208),
+                    Color.fromARGB(255, 29, 64, 91),
+                    Color.fromARGB(255, 29, 64, 91),
                   ],
-                  begin: Alignment.center,
+                  begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   stops: [
                     0.1,
-                    0.4,
+                    0.7,
+                    0.1,
                   ]),
             ),
           ),
@@ -101,49 +102,50 @@ class OnBoardingPAge extends StatelessWidget {
             padding: const EdgeInsets.only(top: 700, left: 15),
             child: TextButton(
                 onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      PageTransition(
-                          const LoginScreen(), Curves.easeInOutQuart));
+                  Get.offNamed(Routes.getloginRoute());
                 },
                 child: const Text(
                   AppStrings.skip,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 16,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                 )),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 700, left: 300),
-            child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary: const Color.fromARGB(255, 35, 35, 38)),
-                onPressed: () {
-                  if (_currentIndex <= 0) {
-                    _pageController.animateToPage(
-                      _getNextIndex(),
-                      duration: const Duration(
-                          seconds: AppConstants.sliderAnimationTime),
-                      curve: Curves.ease,
-                    );
-                  } else {
-                    Navigator.pushReplacement(context,
-                        PageTransition(const LoginScreen(), Curves.easeInOutQuart));
-                  }
-                },
-                child: const Text(
-                  AppStrings.next,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                )),
+            padding: const EdgeInsets.only(top: 700, left: 280),
+            child: SizedBox(
+              width: 90,
+              height: 40,
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 35, 35, 38),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(7)),
+                  ),
+                  onPressed: () {
+                    if (_currentIndex <= 0) {
+                      _pageController.animateToPage(
+                        _getNextIndex(),
+                        duration: const Duration(
+                            seconds: AppConstants.sliderAnimationTime),
+                        curve: Curves.ease,
+                      );
+                    } else {
+                      Get.offNamed(Routes.getloginRoute());
+                    }
+                  },
+                  child: const Text(
+                    AppStrings.next,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  )),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 625, left: 30),
-            child: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [_getBottomSheetWidget()],
-              ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [_getBottomSheetWidget()],
             ),
           ),
         ],
@@ -153,24 +155,7 @@ class OnBoardingPAge extends StatelessWidget {
 
   Widget _getBottomSheetWidget() {
     return Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        /* Padding(
-          padding: const EdgeInsets.all(AppSize.s12),
-          child: GestureDetector(
-            child: SizedBox(
-              width: AppSize.s18,
-              height: AppSize.s18,
-              child: SvgPicture.asset(ImageAssets.leftArrowIc),
-            ),
-            onTap: () {
-              _pageController.animateToPage(_getPreviousIndex(),
-                  duration: const Duration(
-                      seconds: AppConstants.sliderAnimationTime),
-                  curve: Curves.bounceInOut);
-            },
-          ),
-        ),*/
         Row(
           children: [
             for (int i = 0; i < 2; i++)
@@ -180,36 +165,8 @@ class OnBoardingPAge extends StatelessWidget {
               )
           ],
         ),
-/*
-        //right icon
-        Padding(
-          padding: const EdgeInsets.all(AppSize.s14),
-          child: GestureDetector(
-            child: SizedBox(
-              width: AppSize.s20,
-              height: AppSize.s20,
-              child: SvgPicture.asset(ImageAssets.rihgtArrowIc),
-            ),
-            onTap: () {
-              _pageController.animateToPage(
-                _getNextIndex(),
-                duration:
-                    const Duration(seconds: AppConstants.sliderAnimationTime),
-                curve: Curves.easeInOutCubicEmphasized,
-              );
-            },
-          ),
-        )*/
       ],
     );
-  }
-
-  int _getPreviousIndex() {
-    int previousIndex = --_currentIndex;
-    if (previousIndex == -1) {
-      previousIndex == 0;
-    }
-    return previousIndex;
   }
 
   int _getNextIndex() {
@@ -236,140 +193,3 @@ class OnBoardingPAge extends StatelessWidget {
     }
   }
 }
-
-
-/* bottomSheet: Container(
-          color: ColorManger.white,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, Routes.loginRoute);
-                  },
-                  child: Text(
-                    AppStrings.skip,
-                    textAlign: TextAlign.end,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ),
-              ),
-              _getBottomSheetWidget()
-            ],
-          ),
-        ),*/
-
-
-
-
- /*Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        const SizedBox(
-          height: AppSize.s40,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(AppPadding.p8),
-          child: Text(
-            _sliderObject.title,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.displayLarge,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(AppPadding.p8),
-          child: Text(
-            _sliderObject.subTitle,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-        ),
-        const SizedBox(
-          height: AppSize.s60,
-        ),
-        Image(image: AssetImage(_sliderObject.image,),)
-      ],
-    );*/        
-
-
-
-    
-  /* Widget _getBottomSheetWidget() {
-    return Container(
-      color: ColorManger.primary,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(AppSize.s12),
-            child: GestureDetector(
-              child: SizedBox(
-                width: AppSize.s18,
-                height: AppSize.s18,
-                child: SvgPicture.asset(ImageAssets.leftArrowIc),
-              ),
-              onTap: () {
-                _pageController.animateToPage(_getPreviousIndex(),
-                    duration: const Duration(
-                        seconds: AppConstants.sliderAnimationTime),
-                    curve: Curves.bounceInOut);
-              },
-            ),
-          ),
-          Row(
-            children: [
-              for (int i = 0; i < _list.length; i++)
-                Padding(
-                  padding: const EdgeInsets.all(AppSize.s8),
-                  child: _getProperCircle(i),
-                )
-            ],
-          ),
-
-          //right icon
-          Padding(
-            padding: const EdgeInsets.all(AppSize.s14),
-            child: GestureDetector(
-              child: SizedBox(
-                width: AppSize.s20,
-                height: AppSize.s20,
-                child: SvgPicture.asset(ImageAssets.rihgtArrowIc),
-              ),
-              onTap: () {
-                _pageController.animateToPage(_getNextIndex(),
-                    duration: const Duration(
-                        milliseconds: AppConstants.sliderAnimationTime),
-                    curve: Curves.bounceInOut);
-              },
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  int _getPreviousIndex() {
-    int previousIndex = --_currentIndex;
-    if (previousIndex == -1) {
-      previousIndex == _list.length - 1;
-    }
-    return previousIndex;
-  }
-
-  int _getNextIndex() {
-    int nextIndex = ++_currentIndex;
-    if (nextIndex == _list.length) {
-      nextIndex == 0;
-    }
-    return nextIndex;
-  }
-
-  Widget _getProperCircle(int index) {
-    if (index == _currentIndex) {
-      return SvgPicture.asset(ImageAssets.hollowCircleIc);
-    } else {
-      return SvgPicture.asset(ImageAssets.solidCircleIC);
-    }
-  }*/

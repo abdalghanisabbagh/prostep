@@ -57,7 +57,7 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(75),
-          child: MainAppBar(
+          child: mainAppBar(
             text: "Abdo",
             icon: const Icon(
               Icons.arrow_back,

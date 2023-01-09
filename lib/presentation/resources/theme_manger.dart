@@ -8,10 +8,10 @@ ThemeData getApplicationTheme() {
   return ThemeData(
       //main color
       primaryColor: ColorManger.primary,
-      primaryColorLight: ColorManger.lightPrimary,
+      primaryColorLight: ColorManger.splashcolor,
       primaryColorDark: ColorManger.darkPrimary,
       disabledColor: ColorManger.gray1,
-      splashColor: ColorManger.lightPrimary,
+      splashColor: ColorManger.splashcolor,
 
       //cardview theme
       cardTheme: CardTheme(
@@ -23,7 +23,7 @@ ThemeData getApplicationTheme() {
           centerTitle: true,
           color: ColorManger.primary,
           elevation: AppSize.s4,
-          shadowColor: ColorManger.lightPrimary,
+          shadowColor: ColorManger.splashcolor,
           titleTextStyle: getRegularStyle(
               color: ColorManger.white, fontSize: FontSize.s16)),
       //button theme
@@ -31,13 +31,13 @@ ThemeData getApplicationTheme() {
           shape: const StadiumBorder(),
           disabledColor: ColorManger.gray1,
           buttonColor: ColorManger.primary,
-          splashColor: ColorManger.lightPrimary),
-//elevated button theme
+          splashColor: ColorManger.splashcolor),
+      //elevated button theme
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
               textStyle: getRegularStyle(
                   color: ColorManger.white, fontSize: FontSize.s17),
-              primary: ColorManger.primary,
+              backgroundColor: ColorManger.primary,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppSize.s12)))),
       //text theme
@@ -60,7 +60,7 @@ ThemeData getApplicationTheme() {
             getRegularStyle(color: ColorManger.gray, fontSize: FontSize.s14),
         labelStyle:
             getMediumStyle(color: ColorManger.gray, fontSize: FontSize.s14),
-        errorStyle: getRegularStyle(color: ColorManger.error),
+        errorStyle: getRegularStyle(color: ColorManger.logintextfaielderror),
         enabledBorder: OutlineInputBorder(
           borderSide:
               BorderSide(color: ColorManger.primary, width: AppSize.s1_5),
@@ -71,12 +71,12 @@ ThemeData getApplicationTheme() {
           borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: ColorManger.error, width: AppSize.s1_5),
+          borderSide: BorderSide(
+              color: ColorManger.logintextfaielderror, width: AppSize.s1_5),
           borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide:
-              BorderSide(color: ColorManger.primary, width: AppSize.s1_5),
+          borderSide: BorderSide(color: ColorManger.white, width: AppSize.s1_5),
           borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
         ),
       ));

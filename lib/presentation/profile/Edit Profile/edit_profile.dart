@@ -57,7 +57,7 @@ class EditProfile extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(75),
-          child: MainAppBar(
+          child: mainAppBar(
             text: "Edit Profile",
             icon: const Icon(
               Icons.arrow_back,

@@ -1,7 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:prostep1/presentation/resources/color_manger.dart';
+import 'package:prostep1/presentation/resources/page_transition.dart';
+import 'package:prostep1/presentation/resources/routes_manger.dart';
+import '../onboarding/view/onboarding_view.dart';
 class MyCustomSplashScreen extends StatefulWidget {
+  const MyCustomSplashScreen({super.key});
   @override
   _MyCustomSplashScreenState createState() => _MyCustomSplashScreenState();
 }
@@ -9,7 +14,7 @@ class MyCustomSplashScreen extends StatefulWidget {
 class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
     with TickerProviderStateMixin {
   double _fontSize = 2;
-  double _containerSize =3;
+  double _containerSize = 3;
   double _textOpacity = 0.0;
   double _containerOpacity = 0.0;
 
@@ -46,13 +51,9 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
       });
     });
 
-    Timer(const Duration(seconds: 5), () {
+    Timer( const Duration(seconds: 4), () {
       setState(() {
-      /*  Navigator.pushReplacement(
-          context,
-          PageTransition(const OnBoardingView(),Curves.bounceInOut),
-        );*/
-        
+        Get.offNamed(Routes.getonbording());
       });
     });
   }
@@ -69,7 +70,7 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor:ColorManger.backgroundsplash,
+      backgroundColor: ColorManger.backgroundsplash,
       body: Stack(
         children: [
           Column(
@@ -107,10 +108,7 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
                     color: ColorManger.backgroundsplash,
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child:
-                      Image.asset('assets/images/prostepsplash.png')
-                
-                  ),
+                  child: Image.asset('assets/images/prostepsplash.png')),
             ),
           ),
         ],
@@ -118,26 +116,3 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
     );
   }
 }
-
-/*
-class SecondPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        brightness: Brightness.dark,
-        backgroundColor: Colors.deepPurple,
-        centerTitle: true,
-        title: Text(
-          'YOUR APP\'S NAME',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
-      ),
-    );
-  }
-}*/

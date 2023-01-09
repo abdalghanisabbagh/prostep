@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MainAppBar extends StatelessWidget {
-  MainAppBar(
+class mainAppBar extends StatelessWidget {
+  mainAppBar(
       {super.key, required this.text, required this.icon, required this.ontap});
   String text;
   Icon icon;

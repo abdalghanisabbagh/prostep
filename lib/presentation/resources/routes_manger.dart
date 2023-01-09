@@ -1,3 +1,4 @@
+import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:prostep1/bindings/home_binding.dart';
 import 'package:prostep1/domain/comments.dart';
@@ -79,7 +80,9 @@ class Routes {
     GetPage(
         name: loginRoute,
         page: () => const LoginScreen(),
-        transition: Transition.fade),
+        transition: Transition.fade,
+        transitionDuration: const Duration(seconds: 1)),
+
     GetPage(
         name: registerRoute,
         page: () => const RegisterScreen(),
@@ -95,10 +98,11 @@ class Routes {
     GetPage(
         name: onbording,
         page: () => const OnBoardingView(),
-        transition: Transition.fade),
+        transition: Transition.fade,
+        transitionDuration: const Duration(seconds: 1)),
     GetPage(
         name: splashviewanimation,
-        page: () => MyCustomSplashScreen(),
+        page: () => const MyCustomSplashScreen(),
         transition: Transition.fade),
     GetPage(
         name: filtering,

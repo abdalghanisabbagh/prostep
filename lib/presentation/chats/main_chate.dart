@@ -10,7 +10,7 @@ class MainChat extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(75),
-          child: MainAppBar(
+          child: mainAppBar(
             text: "Messages",
             icon: const Icon(
               Icons.arrow_back,
