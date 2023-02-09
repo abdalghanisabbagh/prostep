@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:prostep1/controllers/login_controller.dart';
 import '../../auth_button.dart';
 import '../../google_button.dart';
 import '../../text_widget.dart';
@@ -14,6 +15,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  LoginController loginController = Get.put(LoginController());
   final _emailTextController = TextEditingController();
   final _passTextController = TextEditingController();
   final _passFocusNode = FocusNode();
@@ -30,7 +32,9 @@ class _LoginScreenState extends State<LoginScreen> {
   void _submitFormOnLogin() {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
-    if (isValid) {}
+    if (isValid) {
+      loginController.login();
+    }
   }
 
   @override
@@ -86,11 +90,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           textInputAction: TextInputAction.next,
                           onEditingComplete: () => FocusScope.of(context)
                               .requestFocus(_passFocusNode),
-                          controller: _emailTextController,
+                          controller: loginController.userController,
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
-                            if (value!.isEmpty || !value.contains('@')) {
-                              return 'Please enter a valid email address';
+                            if (value!.isEmpty ) {
+                              return 'Please enter a valid user name';
                             } else {
                               return null;
                             }
@@ -101,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Icons.person_outline_outlined,
                               color: Colors.white,
                             ),
-                            hintText: 'Email',
+                            hintText: 'username',
                             hintStyle: TextStyle(color: Colors.white),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -123,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onEditingComplete: () {
                             _submitFormOnLogin();
                           },
-                          controller: _passTextController,
+                          controller: loginController.passwordController,
                           focusNode: _passFocusNode,
                           obscureText: _obscureText,
                           keyboardType: TextInputType.visiblePassword,
@@ -191,7 +195,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 10,
                 ),
                 AuthButton(
-                  fct: _submitFormOnLogin,
+                  fct: () {
+                    _submitFormOnLogin();
+                  },
                   buttonText: 'Login',
                 ),
                 const SizedBox(

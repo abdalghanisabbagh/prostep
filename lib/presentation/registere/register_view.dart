@@ -1,9 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:prostep1/presentation/resources/routes_manger.dart';
 import 'package:prostep1/text_widget.dart';
 import '../../auth_button.dart';
+import '../../controllers/registeration_controller.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const routeName = '/RegisterScreen';
@@ -15,10 +17,9 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
+  RegisterationController registerationController =
+      Get.put(RegisterationController());
 
-  final _fullNameController = TextEditingController();
-  final _emailTextController = TextEditingController();
-  final _passTextController = TextEditingController();
   final _passconfirmTextController = TextEditingController();
   final _addressTextController = TextEditingController();
   final _passFocusNode = FocusNode();
@@ -28,9 +29,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _obscurepasswordconfirmText = true;
   @override
   void dispose() {
-    _fullNameController.dispose();
-    _emailTextController.dispose();
-    _passTextController.dispose();
     _passconfirmTextController.dispose();
     _addressTextController.dispose();
     _emailFocusNode.dispose();
@@ -44,6 +42,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     FocusScope.of(context).unfocus();
     if (isValid) {
       _formKey.currentState!.save();
+      registerationController.registerWithEmail();
     }
   }
 
@@ -86,12 +85,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(
                   height: 8,
                 ),
-                /*TextWidget(
-                  text: "Sign up to continue",
-                  color: Colors.white,
-                  textSize: 18,
-                  isTitle: false,
-                ),*/
                 const SizedBox(
                   height: 30.0,
                 ),
@@ -104,7 +97,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onEditingComplete: () => FocusScope.of(context)
                             .requestFocus(_emailFocusNode),
                         keyboardType: TextInputType.name,
-                        controller: _fullNameController,
+                        controller: registerationController.userController,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "This Field is missing";
@@ -119,7 +112,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             IconlyLight.profile,
                             color: Color.fromARGB(255, 42, 86, 121),
                           ),
-                          hintText: 'Full name',
+                          hintText: 'User name',
                           hintStyle: TextStyle(
                               color: Color.fromARGB(255, 42, 86, 121)),
                           enabledBorder: OutlineInputBorder(
@@ -145,7 +138,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onEditingComplete: () =>
                             FocusScope.of(context).requestFocus(_passFocusNode),
                         keyboardType: TextInputType.emailAddress,
-                        controller: _emailTextController,
+                        controller: registerationController.emailController,
                         validator: (value) {
                           if (value!.isEmpty || !value.contains("@")) {
                             return "Please enter a valid Email adress";
@@ -185,7 +178,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         focusNode: _passFocusNode,
                         obscureText: _obscureText,
                         keyboardType: TextInputType.visiblePassword,
-                        controller: _passTextController,
+                        controller: registerationController.passwordController,
                         validator: (value) {
                           if (value!.isEmpty || value.length < 7) {
                             return "Please enter a valid password";
@@ -287,57 +280,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                       ),
-
-                      /* TextFormField(
-                        focusNode: _addressFocusNode,
-                        textInputAction: TextInputAction.done,
-                        onEditingComplete: _submitFormOnRegister,
-                        controller: _addressTextController,
-                        validator: (value) {
-                          if (value!.isEmpty || value.length < 10) {
-                            return "Please enter a valid  address";
-                          } else {
-                            return null;
-                          }
-                        },
-                        style: const TextStyle(color: Colors.white),
-                        maxLines: 2,
-                        textAlign: TextAlign.start,
-                        decoration: const InputDecoration(
-                          hintText: 'Shipping address',
-                          hintStyle: TextStyle(color: Colors.white),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          errorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.red),
-                          ),
-                        ),
-                      ),*/
                     ],
                   ),
                 ),
                 const SizedBox(
                   height: 200.0,
                 ),
-                /* Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Forget password?',
-                      maxLines: 1,
-                      style: TextStyle(
-                          color: Colors.lightBlue,
-                          fontSize: 18,
-                          decoration: TextDecoration.underline,
-                          fontStyle: FontStyle.italic),
-                    ),
-                  ),
-                ),*/
                 Center(
                   child: RichText(
                     text: TextSpan(
