@@ -1,7 +1,5 @@
-import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:prostep1/bindings/home_binding.dart';
-import 'package:prostep1/domain/comments.dart';
 import 'package:prostep1/presentation/Course%20Content/Course_Content.dart';
 import 'package:prostep1/presentation/Course%20Content/aboutthiscoures.dart';
 import 'package:prostep1/presentation/Course%20Content/comments.dart';

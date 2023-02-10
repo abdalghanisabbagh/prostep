@@ -19,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailTextController = TextEditingController();
   final _passTextController = TextEditingController();
   final _passFocusNode = FocusNode();
-  final _formKey = GlobalKey<FormState>();
+   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   var _obscureText = true;
   @override
   void dispose() {
@@ -93,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           controller: loginController.userController,
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
-                            if (value!.isEmpty ) {
+                            if (value!.isEmpty) {
                               return 'Please enter a valid user name';
                             } else {
                               return null;

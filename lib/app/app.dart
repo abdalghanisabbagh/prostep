@@ -5,9 +5,9 @@ import 'package:prostep1/presentation/resources/theme_manger.dart';
 
 class MyApp extends StatefulWidget {
   // const MyApp({Key? key}) : super(key: key);
-  MyApp._internal();
+  const MyApp._internal();
 
-  static final MyApp _instance = MyApp._internal();
+  static const MyApp _instance = MyApp._internal();
 
   factory MyApp() => _instance;
 

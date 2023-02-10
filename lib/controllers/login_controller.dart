@@ -30,9 +30,10 @@ class LoginController extends GetxController {
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         var token = json['token'];
-        print("the token user $userController  +  $token");
-        final SharedPreferences? prefs = await _prefs;
-        await prefs?.setString('token', token);
+        // ignore: avoid_print
+        print("the token user ${userController.text }  + $token");
+        final SharedPreferences prefs = await _prefs;
+        await prefs.setString('token', token);
         userController.clear();
         emailController.clear();
         passwordController.clear();

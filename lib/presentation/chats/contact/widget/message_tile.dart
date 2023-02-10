@@ -44,7 +44,7 @@ class _MessageTileState extends State<MessageTile> {
                     topRight: Radius.circular(20),
                     bottomRight: Radius.circular(20),
                   ),
-            color: Color(0xffEEF1F4)),
+            color: const Color(0xffEEF1F4)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

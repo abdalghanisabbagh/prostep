@@ -1,10 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:prostep1/presentation/Teacher/teacher.dart';
 import 'package:prostep1/presentation/teacher_information/teacher_information_topbar.dart';
 
-import '../presentation/resources/page_transition.dart';
 
 class RecommendrdCourses extends StatefulWidget {
   const RecommendrdCourses({super.key});

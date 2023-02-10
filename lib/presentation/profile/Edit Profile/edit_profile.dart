@@ -14,7 +14,7 @@ class EditProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController richControler = new TextEditingController();
+    TextEditingController richControler = TextEditingController();
     richControler.text =
         'PHP Web Developer using frameworks ( laravel and codigniter ) and native php xperience 6 years in web applications';
     void onTextFieldTap() {
@@ -56,8 +56,8 @@ class EditProfile extends StatelessWidget {
 
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(75),
-          child: mainAppBar(
+          preferredSize: const Size.fromHeight(75),
+          child: MainAppBar(
             text: "Edit Profile",
             icon: const Icon(
               Icons.arrow_back,
@@ -209,7 +209,7 @@ class EditProfile extends StatelessWidget {
                     itemCount: 2,
                     itemBuilder: ((context, index) {
                       return const Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Text(
                           'Junior flutter developer at plus99',
                           textWidthBasis: TextWidthBasis.longestLine,

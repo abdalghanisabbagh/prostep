@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class ContactView extends StatelessWidget {
   const ContactView({super.key});
@@ -10,7 +7,7 @@ class ContactView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           backgroundImage: NetworkImage(
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd9VwEW5DYn4Z9HCIEY_XpAsV1vtoJxOsHzQ&usqp=CAU"),
         ),

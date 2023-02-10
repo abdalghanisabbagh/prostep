@@ -1,9 +1,10 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
 class HomeController extends GetxController {
-  final GlobalKey<ScaffoldState> sideMenuKey = GlobalKey<ScaffoldState>();
+  GlobalKey<ScaffoldState> sideMenuKey = GlobalKey<ScaffoldState>();
 
   @override
   void onInit() {

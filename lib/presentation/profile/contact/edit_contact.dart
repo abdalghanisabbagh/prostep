@@ -13,8 +13,8 @@ class EditContact extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(75),
-          child: mainAppBar(
+          preferredSize: const Size.fromHeight(75),
+          child: MainAppBar(
             text: "Edit Contact info",
             icon: const Icon(
               Icons.arrow_back,

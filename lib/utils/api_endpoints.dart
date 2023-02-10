@@ -1,6 +1,6 @@
 class ApiEndPoints {
   static const String baseUrl = 'http://testprostep0-001-site1.etempurl.com';
-  static _AuthEndPoints authEndpoints = _AuthEndPoints();
+  static var authEndpoints = _AuthEndPoints();
 }
 
 class _AuthEndPoints {

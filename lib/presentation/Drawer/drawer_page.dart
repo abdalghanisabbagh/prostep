@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:prostep1/controllers/logout_controller.dart';
 import 'package:prostep1/widget/text_with_icone.dart';
 
 class SettingPage extends StatefulWidget {
@@ -8,13 +10,15 @@ class SettingPage extends StatefulWidget {
   State<SettingPage> createState() => _SettingPageState();
 }
 
+LogoutController logoutController = Get.put(LogoutController());
+
 class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.75,
       child: ClipRRect(
-        borderRadius: BorderRadius.horizontal(
+        borderRadius: const BorderRadius.horizontal(
           left: Radius.circular(25),
         ),
         child: Drawer(
@@ -33,16 +37,16 @@ class _SettingPageState extends State<SettingPage> {
                           child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          CircleAvatar(
+                          const CircleAvatar(
                             maxRadius: 30,
                             backgroundColor: Color(0xff2a5679),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               Text(
                                 "Farah",
                                 style: TextStyle(
@@ -103,10 +107,15 @@ class _SettingPageState extends State<SettingPage> {
                     ],
                   ),
                 ),
-                Container(
-                    padding: EdgeInsets.only(left: 150, bottom: 50),
-                    child: TextWithIconeWidget(
-                        title: "Logout", svgIcon: "logout_ic.svg"))
+                InkResponse(
+                  onTap: () {
+                    logoutController.logout();
+                  },
+                  child: Container(
+                      padding: const EdgeInsets.only(left: 150, bottom: 50),
+                      child: TextWithIconeWidget(
+                          title: "Logout", svgIcon: "logout_ic.svg")),
+                )
               ],
             ),
           ),

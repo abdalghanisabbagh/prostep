@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:prostep1/presentation/resources/color_manger.dart';
-import 'package:prostep1/presentation/resources/page_transition.dart';
 import 'package:prostep1/presentation/resources/routes_manger.dart';
-import '../onboarding/view/onboarding_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 class MyCustomSplashScreen extends StatefulWidget {
   const MyCustomSplashScreen({super.key});
   @override
@@ -51,9 +51,19 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
       });
     });
 
-    Timer( const Duration(seconds: 4), () {
-      setState(() {
+    void getTokn() async {
+      SharedPreferences p = await SharedPreferences.getInstance();
+     // print("token now ${p.getString("token")}");
+      if (p.getString("token") != null) {
+        Get.offNamed(Routes.getmainRoute());
+      } else {
         Get.offNamed(Routes.getonbording());
+      }
+    }
+
+    Timer(const Duration(seconds: 4), () async {
+      setState(() {
+        getTokn();
       });
     });
   }

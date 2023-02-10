@@ -56,8 +56,8 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(75),
-          child: mainAppBar(
+          preferredSize: const Size.fromHeight(75),
+          child: MainAppBar(
             text: "Abdo",
             icon: const Icon(
               Icons.arrow_back,
@@ -82,17 +82,17 @@ class _ChatPageState extends State<ChatPage> {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-            color: Color(0xffEEF1F4), borderRadius: BorderRadius.circular(25)),
-        margin: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-        padding: EdgeInsets.all(8),
+            color: const Color(0xffEEF1F4), borderRadius: BorderRadius.circular(25)),
+        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+        padding: const EdgeInsets.all(8),
         child: Row(children: [
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Color(0xff1D405B),
+              color: const Color(0xff1D405B),
               borderRadius: BorderRadius.circular(25),
             ),
-            child: Icon(
+            child: const Icon(
               Icons.camera_alt_outlined,
               color: Colors.white,
             ),
@@ -101,7 +101,7 @@ class _ChatPageState extends State<ChatPage> {
               child: TextFormField(
             controller: messageController,
             style: const TextStyle(color: Colors.white),
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               enabledBorder: InputBorder.none,
               hintStyle: TextStyle(color: Colors.white, fontSize: 16),
               border: InputBorder.none,
@@ -152,7 +152,7 @@ class _ChatPageState extends State<ChatPage> {
     ListView.builder(
       itemCount: 2,
       itemBuilder: (context, index) {
-        return MessageTile(
+        return const MessageTile(
             message: "Lorem kmek  kkskkkkl kmlmkl mkd k  kdmkml",
             sender: "snapshot.data.docs[index]['sender']",
             sentByMe: true);

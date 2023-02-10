@@ -9,8 +9,8 @@ class MainChat extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(75),
-          child: mainAppBar(
+          preferredSize: const Size.fromHeight(75),
+          child: MainAppBar(
             text: "Messages",
             icon: const Icon(
               Icons.arrow_back,
@@ -22,7 +22,7 @@ class MainChat extends StatelessWidget {
           itemCount: 3,
           itemBuilder: ((context, index) {
             return const Padding(
-              padding: const EdgeInsets.all(20),
+              padding:  EdgeInsets.all(20),
               child: ContactView(),
             );
           })),

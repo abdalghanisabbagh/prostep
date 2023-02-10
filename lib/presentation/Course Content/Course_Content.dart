@@ -39,7 +39,7 @@ class _CourseContentState extends State<CourseContent> {
               text: "aaaa")
         ]),
         subtitleBuilder: ((context, subtitle) => Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Text(
                 subtitle,
               ),
@@ -51,9 +51,9 @@ class _CourseContentState extends State<CourseContent> {
   void initState() {
     super.initState();
     loadVideoPlayer();
-    datalist.forEach((element) {
+    for (var element in datalist) {
       data.add(SectionMenu.fromJSon(element));
-    });
+    }
   }
 
   @override

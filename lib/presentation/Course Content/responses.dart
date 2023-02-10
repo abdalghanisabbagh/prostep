@@ -1,9 +1,8 @@
-import 'dart:convert';
+// ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prostep1/presentation/resources/routes_manger.dart';
-import 'package:prostep1/presentation/resources/showDialog.dart';
 
 import '../../domain/comments.dart';
 

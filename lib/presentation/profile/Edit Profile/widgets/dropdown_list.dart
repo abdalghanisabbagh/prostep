@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 class CustemDropDown extends StatelessWidget {
@@ -20,7 +22,7 @@ class CustemDropDown extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(0),
+            margin: const EdgeInsets.all(0),
             width: double.maxFinite,
             child: DropdownButton(
                 style: const TextStyle(

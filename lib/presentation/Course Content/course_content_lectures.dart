@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../domain/course_section_models.dart';
 
@@ -16,9 +15,9 @@ class _CourseContentLecturesState extends State<CourseContentLectures> {
   @override
   void initState() {
     super.initState();
-    datalist.forEach((element) {
+    for (var element in datalist) {
       data.add(SectionMenu.fromJSon(element));
-    });
+    }
   }
 
   @override

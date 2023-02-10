@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,8 +35,8 @@ class RegisterationController extends GetxController {
         final json = jsonDecode(response.body);
         var token = json['token'];
         print("the token user $userController  +  $token");
-        final SharedPreferences? prefs = await _prefs;
-        await prefs?.setString('token', token);
+        final SharedPreferences prefs = await _prefs;
+        await prefs.setString('token', token);
         userController.clear();
         emailController.clear();
         passwordController.clear();

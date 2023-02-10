@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prostep1/presentation/profile/widgets/info_widget.dart';
@@ -63,11 +65,11 @@ class MainProfileScreen extends StatelessWidget {
                     right: 10,
                     top: 20,
                     child: Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(25)),
-                      child: Icon(
+                      child: const Icon(
                         Icons.camera_alt_rounded,
                         color: Color(0xff1D405B),
                       ),
@@ -75,7 +77,7 @@ class MainProfileScreen extends StatelessWidget {
               ],
             ),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
@@ -126,7 +128,7 @@ class MainProfileScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      color: Color.fromARGB(255, 29, 64, 91),
+                      color: const Color.fromARGB(255, 29, 64, 91),
                     ),
                     child: const Center(
                       child: Text(
@@ -147,7 +149,7 @@ class MainProfileScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
                       border: Border.all(
-                          color: Color.fromARGB(255, 29, 64, 91), width: 2),
+                          color: const Color.fromARGB(255, 29, 64, 91), width: 2),
                       color: Colors.transparent,
                     ),
                     child: const Center(
@@ -169,7 +171,7 @@ class MainProfileScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
                       border: Border.all(
-                          color: Color.fromARGB(255, 29, 64, 91), width: 2),
+                          color: const Color.fromARGB(255, 29, 64, 91), width: 2),
                       color: Colors.transparent,
                     ),
                     child: const Center(
@@ -263,7 +265,7 @@ class MainProfileScreen extends StatelessWidget {
                       color: Color.fromARGB(255, 29, 64, 91),
                     ),
                     bottem: Column(
-                      children: [
+                      children: const [
                         ExperienceWidget(),
                         Divider(
                           color: Colors.grey,
@@ -289,7 +291,7 @@ class MainProfileScreen extends StatelessWidget {
                         Icons.edit_outlined,
                         color: Color.fromARGB(255, 29, 64, 91),
                       ),
-                      bottem: PepleRecommended()),
+                      bottem: const PepleRecommended()),
                   Container(
                     color: const Color(0xffebeef0),
                     height: 6,

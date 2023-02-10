@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,7 +6,6 @@ import 'package:prostep1/controllers/home_controller.dart';
 import 'package:prostep1/presentation/Drawer/drawer_page.dart';
 import 'package:prostep1/presentation/Teacher/teacher.dart';
 import 'package:prostep1/presentation/main/starting_page.dart';
-import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -139,7 +137,7 @@ class HomePageState extends State<BottomBar> {
   ];
   final List<Map<String, dynamic>> _pages = [
     {
-      'page': Startingpage(),
+      'page': const Startingpage(),
       'title': 'Home Screen',
     },
     {
@@ -149,7 +147,7 @@ class HomePageState extends State<BottomBar> {
   ];
   Widget buildMenu() {
     return SingleChildScrollView(
-      padding: EdgeInsets.all(50),
+      padding: const EdgeInsets.all(50),
       child: Column(children: [
         ListTile(
           onTap: () {},
