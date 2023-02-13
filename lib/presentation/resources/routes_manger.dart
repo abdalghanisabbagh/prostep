@@ -3,7 +3,7 @@ import 'package:prostep1/bindings/home_binding.dart';
 import 'package:prostep1/presentation/Course%20Content/Course_Content.dart';
 import 'package:prostep1/presentation/Course%20Content/aboutthiscoures.dart';
 import 'package:prostep1/presentation/Course%20Content/comments.dart';
-import 'package:prostep1/presentation/Course%20Content/course_content1.dart';
+import 'package:prostep1/presentation/Course%20Content/course_content_tabs.dart';
 import 'package:prostep1/presentation/Course%20Content/responses.dart';
 import 'package:prostep1/presentation/forgetpassword/forget_password_view.dart';
 import 'package:prostep1/presentation/login/login_view.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:prostep1/presentation/Course%20Content/course_content1.dart';
+import 'package:prostep1/presentation/Course%20Content/course_content_tabs.dart';
 
 class AboutThisCourse extends StatelessWidget {
   const AboutThisCourse({super.key});
