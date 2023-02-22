@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:prostep1/presentation/Course%20Content/Course_Content.dart';
+import 'package:prostep1/screens/Course%20Content/Course_Content.dart';
 
 class RecommendrdBootcamps extends StatefulWidget {
   const RecommendrdBootcamps({super.key});

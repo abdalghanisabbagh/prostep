@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../presentation/resources/routes_manger.dart';
+import '../screens/resources/routes_manger.dart';
 
 class LogoutController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prostep1/presentation/resources/color_manger.dart';
+import 'package:prostep1/screens/resources/color_manger.dart';
 import 'package:prostep1/text_widget.dart';
 
 class AuthButton extends StatelessWidget {
