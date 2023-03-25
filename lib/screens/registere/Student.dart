@@ -18,7 +18,7 @@ class _CoachOrStudentState extends State<CoachOrStudent> {
   final MyController c = Get.put(MyController());
 
   bool css = false;
-
+  List<String> cat = [];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -159,7 +159,14 @@ class _CoachOrStudentState extends State<CoachOrStudent> {
                                 value: c.data[index].isSelected,
                                 onChanged: (value) {
                                   setState(() {
+                                    cat = [];
                                     c.data[index].isSelected = value!;
+                                    for (int o = 0; o < c.data.length; o++) {
+                                      if (c.data[o].isSelected == true) {
+                                        cat.add(
+                                            c.data[o].id.toString());
+                                      }
+                                    }
                                   });
                                 },
                               );
@@ -176,7 +183,8 @@ class _CoachOrStudentState extends State<CoachOrStudent> {
               ),
               AuthButton(
                 fct: () {
-                  Get.toNamed(Routes.mainRoute);
+                  c.chosemycategories(cat);
+                  // Get.toNamed(Routes.mainRoute);
                   /*await Get.find<RegisterationController>().registerWithEmail(
                       widget.name, widget.em, widget.pas, 5);*/
                 },

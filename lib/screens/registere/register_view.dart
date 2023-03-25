@@ -20,9 +20,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   RegisterationController registerationController =
       Get.put(RegisterationController());
-  int usertype = 5;
+  int usertype = 4;
+  int groupValue = 4;
   bool _isloading = false;
   bool toggleValue = false;
+
   final _passconfirmTextController = TextEditingController();
   final _addressTextController = TextEditingController();
   final _passFocusNode = FocusNode();
@@ -90,19 +92,80 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 40.0,
+                    height: 30.0,
                   ),
                   TextWidget(
                     text: 'Register Account',
-                    color: const Color.fromARGB(255, 42, 86, 121),
+                    color: const Color.fromARGB(255, 29, 64, 91),
                     textSize: 25,
                     isTitle: true,
                   ),
                   const SizedBox(
-                    height: 8,
+                    height: 20.0,
+                  ),
+                  TextWidget(
+                    text: 'Do you want to be a student / teacher ?',
+                    color: const Color.fromARGB(255, 42, 86, 121),
+                    textSize: 25,
+                    isTitle: false,
                   ),
                   const SizedBox(
-                    height: 30.0,
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Radio(
+                        value: 4,
+                        groupValue: groupValue,
+                        onChanged: (val) {
+                          setState(() {
+                            groupValue = 4;
+
+                            usertype = 4;
+                          });
+                        },
+                      ),
+                      TextWidget(
+                          text: 'Coach',
+                          color: const Color.fromARGB(255, 29, 64, 91),
+                          textSize: 14),
+                      const SizedBox(
+                        width: 75,
+                      ),
+                      Radio(
+                          value: 5,
+                          groupValue: groupValue,
+                          onChanged: (val) {
+                            setState(() {
+                              usertype = 5;
+                              groupValue = 5;
+                            });
+                          }),
+                      TextWidget(
+                          text: 'Student',
+                          color: const Color.fromARGB(255, 29, 64, 91),
+                          textSize: 14),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  groupValue == 4
+                      ? SizedBox(
+                          width: MediaQuery.of(context).size.width / 1.3,
+                          height: 50,
+                          child: TextWidget(
+                            text: 'Please add your certificate '
+                                'in Profile settings when log in',
+                            color: const Color.fromARGB(255, 29, 64, 91),
+                            textSize: 18,
+                          ),
+                        )
+                      : Container(),
+                  const SizedBox(
+                    height: 15,
                   ),
                   Form(
                     key: _formKey,
@@ -296,7 +359,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                         ),
-                        Switch(
+                        /* Switch(
                           value: toggleValue,
                           onChanged: (value) {
                             if (toggleValue == false) {
@@ -315,7 +378,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           activeColor: Colors.blue,
                           activeTrackColor: Colors.lightBlue,
                           inactiveTrackColor: Colors.grey[400],
-                        ),
+                        ),*/
                       ],
                     ),
                   ),

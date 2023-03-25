@@ -20,8 +20,11 @@ class MyController extends GetxController {
     super.onInit();
   }
 
-  Future<void> chosemycategories() async {
+  Future<void> chosemycategories(List<String> cat) async {
     final SharedPreferences prefs = await _prefs;
+    for (int i = 0; i < cat.length; i++) {
+      print("object is " + cat[i]);
+    }
     final token = prefs.getString('token');
 
     var headers = {
@@ -32,7 +35,7 @@ class MyController extends GetxController {
     var url = Uri.parse(
         ApiEndPoints.baseUrl + ApiEndPoints.authEndpoints.choosemycategories);
     Map body = {
-      "id": "string",
+      "id": cat,
     };
     http.Response response =
         await http.post(url, body: jsonEncode(body), headers: headers);
