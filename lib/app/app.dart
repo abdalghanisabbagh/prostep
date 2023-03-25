@@ -21,9 +21,12 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      
       getPages: Routes.routes,
       initialRoute: Routes.getsplashviewanimation(),
       theme: getApplicationTheme(),
+            // theme:ThemeData.light(),
+
     );
   }
 }

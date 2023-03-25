@@ -12,6 +12,7 @@ import 'package:prostep1/screens/main/filtering.dart';
 import 'package:prostep1/screens/onboarding/view/onboarding_view.dart';
 import 'package:prostep1/screens/profile/Edit%20Profile/edit_profile.dart';
 import 'package:prostep1/screens/profile/main_profile.dart';
+import 'package:prostep1/screens/registere/Student.dart';
 import 'package:prostep1/screens/registere/register_view.dart';
 import 'package:prostep1/screens/splash/splash_view_animation.dart';
 import 'package:prostep1/screens/store_details/store_details_view.dart';
@@ -44,6 +45,7 @@ class Routes {
   static const String editContact = "/editeContact";
   static const String mainChat = "/mainChat";
   static const String contactChat = "/contactChat";
+  static const String CoachorStudent = "/CoachorStudent";
 
   static String getsplashRoute() => splashRoute;
   static String getloginRoute() => loginRoute;
@@ -67,6 +69,11 @@ class Routes {
   static String getEditContact() => editContact;
   static String getMainChat() => mainChat;
   static String getContactChat() => contactChat;
+  // static String getCoachorStudent(String name, String em, String pas) =>
+  //     "$CoachorStudent?em=$em&pas=$pas&name=$name";
+  // static String getCoachorStudent() => CoachorStudent;
+  static String getCoachorStudent(int usertype) =>
+      "$CoachorStudent?usertype=$usertype";
 
   static List<GetPage> routes = [
     // GetPage(name: splashRoute, page: () => SplashView()),
@@ -157,6 +164,19 @@ class Routes {
     GetPage(
         name: contactChat,
         page: () => const ChatPage(),
+        transition: Transition.fade),
+    /* GetPage(
+        name: CoachorStudent,
+        page: () =>  CoachOrStudent(),
+        transition: Transition.fade),*/
+    GetPage(
+        name: CoachorStudent,
+        page: () {
+          var usertype = Get.parameters['usertype'];
+          return CoachOrStudent(
+            usertype:int.parse(usertype!),
+          );
+        },
         transition: Transition.fade),
 
     // GetPage(

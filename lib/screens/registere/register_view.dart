@@ -20,12 +20,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   RegisterationController registerationController =
       Get.put(RegisterationController());
-
+  int usertype = 5;
+  bool _isloading = false;
+  bool toggleValue = false;
   final _passconfirmTextController = TextEditingController();
   final _addressTextController = TextEditingController();
   final _passFocusNode = FocusNode();
   final _emailFocusNode = FocusNode();
   final _addressFocusNode = FocusNode();
+  TextEditingController userController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   bool _obscureText = true;
   bool _obscurepasswordconfirmText = true;
   @override
@@ -38,19 +43,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
     super.dispose();
   }
 
-  bool _isLoading = false;
-
   void _submitFormOnRegister() async {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
     if (isValid) {
       _formKey.currentState!.save();
       setState(() {
-        _isLoading = true;
+        _isloading = true;
       });
-      await registerationController.registerWithEmail();
+      await registerationController.registerWithEmail(userController.text,
+          emailController.text, passwordController.text, usertype);
       setState(() {
-        _isLoading = false;
+        _isloading = false;
       });
     }
   }
@@ -58,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return LoadingManager(
-      isLoading: _isLoading,
+      isLoading: _isloading,
       child: Scaffold(
         body: Stack(
           children: <Widget>[
@@ -109,7 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onEditingComplete: () => FocusScope.of(context)
                               .requestFocus(_emailFocusNode),
                           keyboardType: TextInputType.name,
-                          controller: registerationController.userController,
+                          controller: userController,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "This Field is missing";
@@ -150,7 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onEditingComplete: () => FocusScope.of(context)
                               .requestFocus(_passFocusNode),
                           keyboardType: TextInputType.emailAddress,
-                          controller: registerationController.emailController,
+                          controller: emailController,
                           validator: (value) {
                             if (value!.isEmpty || !value.contains("@")) {
                               return "Please enter a valid Email adress";
@@ -190,8 +194,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           focusNode: _passFocusNode,
                           obscureText: _obscureText,
                           keyboardType: TextInputType.visiblePassword,
-                          controller:
-                              registerationController.passwordController,
+                          controller: passwordController,
                           validator: (value) {
                             if (value!.isEmpty || value.length < 7) {
                               return "Please enter a valid password";
@@ -293,6 +296,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                         ),
+                        Switch(
+                          value: toggleValue,
+                          onChanged: (value) {
+                            if (toggleValue == false) {
+                              setState(() {
+                                toggleValue = value;
+
+                                usertype = 4;
+                              });
+                            } else {
+                              setState(() {
+                                toggleValue = false;
+                                usertype = 5;
+                              });
+                            }
+                          },
+                          activeColor: Colors.blue,
+                          activeTrackColor: Colors.lightBlue,
+                          inactiveTrackColor: Colors.grey[400],
+                        ),
                       ],
                     ),
                   ),
@@ -324,7 +347,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: 10.0,
                   ),
                   AuthButton(
-                    buttonText: 'Register',
+                    buttonText: 'Next',
                     fct: () {
                       _submitFormOnRegister();
                     },
